@@ -1,5 +1,7 @@
 // controllers/userController.js
 const userService = require("../services/userService");
+const { validateEmail } = require("../utils/validators");
+const dbModels = require("../models/dbModels");
 
 exports.getUser = async (req, res) => {
   try {
@@ -14,6 +16,14 @@ exports.getUser = async (req, res) => {
 };
 
 exports.updateUser = async (req, res) => {
+  const { email, name } = req.body;
+
+  // Validate email
+  if (email && !validateEmail(email)) {
+    return res.status(400).json({ message: "Invalid email format" });
+  }
+
+  // Update user logic...
   try {
     const updatedUser = await userService.updateUser(
       req.session.userId,
