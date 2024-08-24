@@ -22,11 +22,26 @@ exports.getCourseById = (id) => {
 };
 
 exports.addCourse = (courseData) => {
-  const { title, description, videoUrl, notesUrl, assignmentUrl } = courseData;
-
-  const sql =
-    "INSERT INTO courses (title, description, course_video_url, course_notes_url, course_assignment_url) VALUES (?, ?, ?, ?, ?)";
-  const values = [title, description, videoUrl, notesUrl, assignmentUrl];
+  //  console.log("Starting to add course");
+   const {
+     course_name,
+     description,
+     course_video_url,
+     course_notes_url,
+     course_assignment_url,
+   } = courseData;
+  const sql = `
+        INSERT INTO courses (course_name, description, course_video_url, course_notes_url, course_assignment_url)
+        VALUES (?, ?, ?, ?, ?)
+    `;
+  const values = [
+    course_name,
+    description,
+    course_video_url,
+    course_notes_url,
+    course_assignment_url,
+  ];
+  // console.log("Executing query");
 
   return new Promise((resolve, reject) => {
     db.query(sql, values, (err, result) => {
