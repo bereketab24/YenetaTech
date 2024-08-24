@@ -1,15 +1,24 @@
 // services/courseService.js
 const db = require("../config/database");
 
-exports.getAllCourses = () => {
-  return new Promise((resolve, reject) => {
-    const sql = "SELECT * FROM courses";
-    db.query(sql, (err, results) => {
-      if (err) return reject(err);
-      resolve(results);
-    });
-  });
+
+exports.getAllCourses = async () => {
+  try {
+    const [courses] = await db.query(`SELECT * FROM courses`);
+    return courses;
+  } catch (error) {
+    throw new Error("Failed to fetch courses: " + error.message);
+  }
 };
+// exports.getAllCourses = () => {
+//   return new Promise((resolve, reject) => {
+//     const sql = "SELECT * FROM courses";
+//     db.query(sql, (err, results) => {
+//       if (err) return reject(err);
+//       resolve(results);
+//     });
+//   });
+// };
 
 exports.getCourseById = (id) => {
   return new Promise((resolve, reject) => {

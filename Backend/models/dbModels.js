@@ -11,14 +11,27 @@ exports.createUser = (userData) => {
   });
 };
 
-exports.findUserByEmail = (email) => {
-  return new Promise((resolve, reject) => {
-    const query = "SELECT * FROM users WHERE email = ?";
-    db.query(query, [email], (err, results) => {
-      if (err) return reject(err);
-      resolve(results[0]);
-    });
-  });
-};
+exports.findUserByEmail = async (email) => {
+  try{
+  const query = "SELECT * FROM users WHERE email = ?";
+  const [result] = await db.query(query, [email])
+  return result[0]
+  }
+  catch (error){
+    return error
+  }
+}
+//   return new Promise((resolve, reject) => {
+//     const query = "SELECT * FROM users WHERE email = ?";
+//     db.query(query, [email], (err, results) => {
+//       if (err) return reject(err);
+//       else{
+//         console.log("User found:", err);
+//       }
+      
+//       resolve(results[0]);
+//     });
+//   });
+// };
 
 // More model methods like updateUser, deleteUser, etc.
