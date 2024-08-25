@@ -1,4 +1,4 @@
-const authService = require("../services/authServices");
+const authService = require("../services/auth.service");
 const { validateEmail, validatePassword } = require("../utils/validators");
 const dbModels = require("../models/dbModels");
 

@@ -1,12 +1,12 @@
 // controllers/adminController.js
-const adminService = require("../services/adminService");
+const adminService = require("../services/admin.service");
 
 exports.getAllUsers = async (req, res) => {
   try {
     const users = await adminService.getAllUsers();
     res.status(200).json(users);
   } catch (error) {
-    res.status(500).json({ message: error.message});
+    res.status(500).json({ message: error.message });
   }
 };
 

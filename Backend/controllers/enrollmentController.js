@@ -1,4 +1,4 @@
-const enrollmentService = require("../services/enrollmentService");
+const enrollmentService = require("../services/enrollment.service");
 
 exports.enroll = async (req, res) => {
   try {

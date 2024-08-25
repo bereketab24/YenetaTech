@@ -1,5 +1,5 @@
 // controllers/progressController.js
-const progressService = require("../services/progressService");
+const progressService = require("../services/progress.service");
 
 exports.getProgress = async (req, res) => {
   try {

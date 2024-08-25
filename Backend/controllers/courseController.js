@@ -1,4 +1,4 @@
-const courseService = require("../services/courseService");
+const courseService = require("../services/course.service");
 
 exports.getAllCourses = async (req, res) => {
   try {

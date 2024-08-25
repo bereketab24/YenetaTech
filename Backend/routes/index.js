@@ -1,11 +1,11 @@
 // routes/index.js
 const express = require("express");
-const authRoutes = require("./authRoutes");
-const courseRoutes = require("./courseRoutes");
-const enrollmentRoutes = require("./enrollmentRoutes");
-const progressRoutes = require("./progressRoutes");
-const userRoutes = require("./userRoutes");
-const adminRoutes = require("./adminRoutes");
+const authRoutes = require("./auth.routes");
+const courseRoutes = require("./course.routes");
+const enrollmentRoutes = require("./enrollment.routes");
+const progressRoutes = require("./progress.routes");
+const userRoutes = require("./user.routes");
+const adminRoutes = require("./admin.routes");
 
 const router = express.Router();
 
