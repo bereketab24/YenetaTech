@@ -33,16 +33,46 @@ const db = require("../config/database");
 // authServices.js
 // authServices.js
 
+// exports.register = async (userData) => {
+  
+//   const hashedPassword = await bcrypt.hash(password, 10);
+//   const sql =
+//     "INSERT INTO users (username, email, password, role_id) VALUES (?, ?, ?, ?)";
+
+//   return new Promise((resolve, reject) => {
+//     db.query(
+//       sql,
+//       [username, email, hashedPassword, studentRoleId],
+//       (err, result) => {
+//         if (err) return reject(err);
+//         resolve({
+//           id: result.insertId,
+//           username,
+//           email,
+//           roleId: studentRoleId,
+//         });
+//       }
+//     );
+//   });
+// };
 
 
-exports.register = async ({ username, email, password, roleId }) => {
+exports.register = async (userData) => {
     try {
+      const { username, email, password } = userData;
+
+      // Fetch the role_id for "student"
+      const [roleResult] = await db.query(
+        "SELECT role_id FROM roles WHERE role_name = 'student'"
+      );
+      const studentRoleId = roleResult[0].role_id;
+
         const hashedPassword = await bcrypt.hash(password, 10);
         const sql = `INSERT INTO users (username, email, password, role_id) VALUES (?, ?, ?, ?)`;
-        const values = [username, email, hashedPassword, roleId];
+        const values = [username, email, hashedPassword, studentRoleId];
 
         const [result] = await db.query(sql, values);
-        return { id: result.insertId, username, email, roleId };
+        return { id: result.insertId, username, email, roleId: studentRoleId };
     } catch (error) {
         console.error("Error during registration:", error.message);  // Debugging line
         throw new Error('Registration failed: ' + error.message);

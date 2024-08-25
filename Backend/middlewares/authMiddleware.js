@@ -1,7 +1,6 @@
 // middlewares/authMiddleware.js
 
 exports.isAuthenticated = (req, res, next) => {
-  console.log("Session:", req.session);
   if (req.session && req.session.userId) {
     return next();
   }
