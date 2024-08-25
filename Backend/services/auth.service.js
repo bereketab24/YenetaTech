@@ -59,7 +59,7 @@ const db = require("../config/database");
 
 exports.register = async (userData) => {
     try {
-      const { username, email, password } = userData;
+      const { fullname, username, email, password } = userData;
 
       // Fetch the role_id for "student"
       const [roleResult] = await db.query(
@@ -68,8 +68,8 @@ exports.register = async (userData) => {
       const studentRoleId = roleResult[0].role_id;
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const sql = `INSERT INTO users (username, email, password, role_id) VALUES (?, ?, ?, ?)`;
-        const values = [username, email, hashedPassword, studentRoleId];
+        const sql = `INSERT INTO users (fullname, username, email, password, role_id) VALUES (?, ?, ?, ?,?)`;
+        const values = [fullname ,username, email, hashedPassword, studentRoleId];
 
         const [result] = await db.query(sql, values);
         return { id: result.insertId, username, email, roleId: studentRoleId };
