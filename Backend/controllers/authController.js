@@ -40,15 +40,14 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const result = await authService.login(req.body);
-    req.session.userId = result.user.id; // Store user ID in session
+    req.session.userId = result.user.user_id; // Store user ID in session
     req.session.roleId = result.user.role_id; // Store user role in session
     res.status(200).json({
-      message : "Login successull!",
-      data : result
+      message: "Login successull!",
+      data: result,
     });
-    
   } catch (error) {
-    res.status(401).json({ message: error.message});
+    res.status(401).json({ message: error.message });
   }
 };
 

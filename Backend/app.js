@@ -25,6 +25,8 @@ const installRoutes = require("./routes/install");
 
 // Initialize the Express application
 const app = express();
+// Initialize session management
+app.use(session(sessionConfig));
 app.use("/install", installRoutes);
 
 // -------------------- Middleware Setup -------------------- //
@@ -44,13 +46,12 @@ app.use(helmet());
 // HTTP request logger middleware for logging requests in the 'dev' format
 app.use(morgan("dev"));
 
-// Initialize session management
-app.use(session(sessionConfig));
+
 
 // -------------------- Routes Setup -------------------- //
 
 // Use the imported routes
-app.use("/admin", isAuthenticated, isAdmin, adminRoutes);
+// app.use("/admin", isAuthenticated, isAdmin, adminRoutes);
 app.use("/", routes);
 
 // -------------------- Error Handling -------------------- //
