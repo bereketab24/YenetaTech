@@ -20,7 +20,6 @@ const { isAdmin } = require("./middlewares/roleMiddleware");
 
 // Import routes
 const routes = require("./routes"); // This imports from 'routes/index.js'
-// const adminRoutes = require("./routes/adminRoutes")
 const installRoutes = require("./routes/install");
 
 // Initialize the Express application
@@ -51,7 +50,6 @@ app.use(morgan("dev"));
 // -------------------- Routes Setup -------------------- //
 
 // Use the imported routes
-// app.use("/admin", isAuthenticated, isAdmin, adminRoutes);
 app.use("/", routes);
 
 // -------------------- Error Handling -------------------- //
