@@ -81,22 +81,6 @@ exports.updateCourse = async(id, courseData) => {
   }
 }
 
-// exports.updateCourse = (id, courseData) => {
-//   const { title, description, videoUrl, notesUrl, assignmentUrl } = courseData;
-
-//   const sql =
-//     "UPDATE courses SET title = ?, description = ?, course_video_url = ?, course_notes_url = ?, course_assignment_url = ? WHERE id = ?";
-//   const values = [title, description, videoUrl, notesUrl, assignmentUrl, id];
-
-//   return new Promise((resolve, reject) => {
-//     db.query(sql, values, (err, result) => {
-//       if (err) return reject(err);
-//       resolve(result.affectedRows > 0);
-//     });
-//   });
-// };
-
-
 exports.deleteCourse = async (id) => {
   try {
     const sql = "DELETE FROM courses WHERE course_id = ?";
@@ -108,12 +92,3 @@ exports.deleteCourse = async (id) => {
   }
 }
 
-// exports.deleteCourse = (id) => {
-//   return new Promise((resolve, reject) => {
-//     const sql = "DELETE FROM courses WHERE id = ?";
-//     db.query(sql, [id], (err, result) => {
-//       if (err) return reject(err);
-//       resolve(result.affectedRows > 0);
-//     });
-//   });
-// };

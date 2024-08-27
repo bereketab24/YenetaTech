@@ -13,18 +13,6 @@ exports.enroll = async (userId, courseId) => {
 }
 
 
-
-
-// exports.enroll = (userId, courseId) => {
-//   const sql = "INSERT INTO enrollments (user_id, course_id) VALUES (?, ?)";
-//   return new Promise((resolve, reject) => {
-//     db.query(sql, [userId, courseId], (err, result) => {
-//       if (err) return reject(err);
-//       resolve({ userId, courseId });
-//     });
-//   });
-// };
-
 exports.unenroll = async (userId, courseId) => {
   try {
     const sql = "DELETE FROM enrollments WHERE user_id = ? AND course_id = ?";
