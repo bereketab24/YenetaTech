@@ -29,16 +29,6 @@ exports.getCourseById = async (id) => {
     throw new Error(error.message)
   }
 }
-
-// exports.getCourseById = (id) => {
-//   return new Promise((resolve, reject) => {
-//     const sql = "SELECT * FROM courses WHERE id = ?";
-//     db.query(sql, [id], (err, results) => {
-//       if (err) return reject(err);
-//       resolve(results[0]);
-//     });
-//   });
-// };
 exports.addCourse = async (courseData) => {
   try {
     const {
