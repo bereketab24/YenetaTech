@@ -43,18 +43,5 @@ exports.updateProgress = async (userId, courseId, progressData) => {
     throw new Error(error.message)
   }
 }
-// exports.updateProgress = (userId, courseId, progressData) => {
-//   const { completedVideos, submittedAssignments } = progressData;
-
-//   const sql =
-//     "INSERT INTO progress (user_id, course_id, completed_videos, submitted_assignments) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE completed_videos = ?, submitted_assignments = ?";
-//   const values = [
-//     userId,
-//     courseId,
-//     completedVideos,
-//     submittedAssignments,
-//     completedVideos,
-//     submittedAssignments,
-//   ];
 
 
