@@ -13,8 +13,6 @@ exports.getProgress = async (userId, courseId) => {
   }
 }
 
-
-
 exports.updateProgress = async (userId, courseId, progressData) => {
   try {
     const { completedVideos, submittedAssignments } = progressData;
