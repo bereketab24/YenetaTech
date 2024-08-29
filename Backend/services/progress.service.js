@@ -12,15 +12,7 @@ exports.getProgress = async (userId, courseId) => {
     throw new Error(error.message)
   }
 }
-// exports.getProgress = (userId, courseId) => {
-//   const sql = "SELECT * FROM progress WHERE user_id = ? AND course_id = ?";
-//   return new Promise((resolve, reject) => {
-//     db.query(sql, [userId, courseId], (err, results) => {
-//       if (err) return reject(err);
-//       resolve(results[0]);
-//     });
-//   });
-// };
+
 
 
 exports.updateProgress = async (userId, courseId, progressData) => {
