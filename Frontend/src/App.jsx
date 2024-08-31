@@ -1,14 +1,28 @@
-import { useState } from 'react'
+import { Routes, Route } from "react-router";
+import Home from "./markup/Pages/Home/Home.jsx";
+import Login from "./markup/Pages/Login/Login.jsx";
+import Register from "./markup/Pages/Register/Register.jsx";
+import Header from "./markup/components/Header/Header.jsx";
+import Footer from "./markup/components/Footer/Footer.jsx";
+import Courses from "./markup/Pages/Courses/Courses.jsx";
+import "./assets/styles/main.css"
+import "./assets/styles/bootstrap-icons.css";
+import "./assets/styles/bootstrap.min.css";
 
-import './App.css'
 
 function App() {
-
   return (
     <>
-      <h1>Hello Class</h1>
+      <Header/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/courses" element= {<Courses/>} />
+      </Routes>
+      <Footer/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
