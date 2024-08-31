@@ -21,7 +21,7 @@ function Register() {
                   </Link>
                 </div>
 
-                <div className={`${classes.card} mb-3`}>
+                <div className={`${classes.card} mb-3 shadow`}>
                   <div className={`${classes.cardbody}`}>
                     <div className="pt-4 pb-2">
                       <h5
@@ -134,7 +134,7 @@ function Register() {
                       <div className="col-12">
                         <p className="small mb-0">
                           Already have an account?
-                          <Link to="/login">Log in</Link>
+                          <Link to="/login"> Log in</Link>
                         </p>
                       </div>
                     </form>

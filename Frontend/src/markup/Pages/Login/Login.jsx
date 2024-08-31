@@ -22,8 +22,8 @@ function Login() {
                     </Link>
                   </div>
 
-                  <div className="card mb-3">
-                    <div className="card-body">
+                  <div className={`${classes.card} mb-3 shadow`}>
+                    <div className={`${classes.cardbody}`}>
                       <div className="pt-4 pb-2">
                         <h5
                           className={`${classes.cardtitle} text-center pb-0 fs-4`}

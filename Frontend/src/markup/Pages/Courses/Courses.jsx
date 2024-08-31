@@ -36,7 +36,7 @@ function Courses() {
               <div className="container">
                 <div className="row">
                   <div className="col-lg-4 col-md-6 d-flex align-items-center mb-3 mb-lg-0">
-                    <div className="course-item">
+                    <div className="course-item shadow">
                       <img src={course1} className="img-fluid" alt="..." />
                       <div className="course-content">
                         <div className="d-flex justify-content-between align-items-center mb-3">
@@ -61,7 +61,7 @@ function Courses() {
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-6 d-flex align-items-center mb-3 mb-lg-0">
-                    <div className="course-item">
+                    <div className="course-item shadow">
                       <img src={course1} className="img-fluid" alt="..." />
                       <div className="course-content">
                         <div className="d-flex justify-content-between align-items-center mb-3">
@@ -86,7 +86,7 @@ function Courses() {
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-6 d-flex align-items-center mb-3 mb-lg-0">
-                    <div className="course-item">
+                    <div className="course-item shadow">
                       <img src={course1} className="img-fluid" alt="..." />
                       <div className="course-content">
                         <div className="d-flex justify-content-between align-items-center mb-3">
