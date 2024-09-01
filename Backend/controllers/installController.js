@@ -36,6 +36,9 @@ exports.install = async (req, res) => {
                 course_id INT AUTO_INCREMENT PRIMARY KEY,
                 course_name VARCHAR(255) NOT NULL UNIQUE,
                 description TEXT,
+                trainer VARCHAR(255),
+                course_fee INT,
+                schedule VARCHAR(255),
                 course_video_url VARCHAR(255),
                 course_notes_url VARCHAR(255),
                 course_assignment_url VARCHAR(255),
@@ -56,7 +59,6 @@ exports.install = async (req, res) => {
                 FOREIGN KEY (course_id) REFERENCES courses(course_id)
             );
         `);
-
 
     await db.query(`
             CREATE TABLE IF NOT EXISTS progress (
