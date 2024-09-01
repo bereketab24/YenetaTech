@@ -7,9 +7,9 @@ import Footer from "./markup/components/Footer/Footer.jsx";
 import Courses from "./markup/Pages/Courses/Courses.jsx";
 import About from "./markup/Pages/About/About.jsx";
 import Contact from "./markup/Pages/Contact/Contact.jsx";
-import "./assets/styles/main.css"
-import "./assets/styles/bootstrap-icons.css";
-import "./assets/styles/bootstrap.min.css";
+import "./assets/styles/public/main.css"
+import "./assets/styles/public/bootstrap-icons.css";
+import "./assets/styles/public/bootstrap.min.css";
 
 
 

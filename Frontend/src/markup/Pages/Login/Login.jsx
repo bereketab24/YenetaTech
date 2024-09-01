@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import classes from "./LoginCss/Login.module.css";
+import classes from "../../../assets/styles/user/user.module.css";
 import logo1 from "../../../assets/images/logoYc.png";
 
 function Login() {
