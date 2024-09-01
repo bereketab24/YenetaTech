@@ -8,6 +8,7 @@ import Courses from "./markup/Pages/Courses/Courses.jsx";
 import About from "./markup/Pages/About/About.jsx";
 import Contact from "./markup/Pages/Contact/Contact.jsx";
 import CourseDetails from "./markup/Pages/CourseDetails/CourseDetails.jsx";
+import Admin from "./markup/Pages/Admin/Admin.jsx";
 import "./assets/styles/public/main.css"
 import "./assets/styles/public/bootstrap-icons.css";
 import "./assets/styles/public/bootstrap.min.css";
@@ -18,7 +19,7 @@ import "./assets/styles/public/bootstrap.min.css";
 function App() {
   return (
     <>
-      <Header/>
+      {/* <Header/> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -27,8 +28,9 @@ function App() {
         <Route path="/about" element= {<About/>} />
         <Route path="/contact" element= {<Contact/>} />
         <Route path="/:courseID" element={<CourseDetails/>} />
+        <Route path="/admin" element={<Admin/>}/>
       </Routes>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
 }

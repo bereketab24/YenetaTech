@@ -145,7 +145,7 @@ h6 {
 }
 
 @media (min-width: 768px) {
-  .dropdown-menu-arrow::before {
+  .dropdownmenuarrow::before {
     content: "";
     width: 13px;
     height: 13px;
@@ -327,18 +327,18 @@ h6 {
   border-bottom: 2px solid #ebeef4;
 }
 
-.nav-tabs-bordered .nav-link {
+.nav-tabs-bordered .navlink {
   margin-bottom: -2px;
   border: none;
   color: #2c384e;
 }
 
-.nav-tabs-bordered .nav-link:hover,
-.nav-tabs-bordered .nav-link:focus {
+.nav-tabs-bordered .navlink:hover,
+.nav-tabs-bordered .navlink:focus {
   color: #57abcd;
 }
 
-.nav-tabs-bordered .nav-link.active {
+.nav-tabs-bordered .navlink.active {
   background-color: #fff;
   color: #57abcd;
   border-bottom: 2px solid #57abcd;
@@ -380,7 +380,7 @@ h6 {
   /* Search Bar */
 }
 
-.header .toggle-sidebar-btn {
+.header .togglesidebarbtn {
   font-size: 32px;
   padding-left: 10px;
   cursor: pointer;
@@ -450,36 +450,36 @@ h6 {
 /*--------------------------------------------------------------
 # Header Nav
 --------------------------------------------------------------*/
-.header-nav ul {
+.headernav ul {
   list-style: none;
 }
 
-.header-nav>ul {
+.headernav>ul {
   margin: 0;
   padding: 0;
 }
 
-.header-nav .nav-icon {
+.headernav .nav-icon {
   font-size: 22px;
   color: #57abcd;
   margin-right: 25px;
   position: relative;
 }
 
-.header-nav .nav-profile {
+.headernav .navprofile {
   color: #57abcd;
 }
 
-.header-nav .nav-profile img {
+.headernav .navprofile img {
   max-height: 36px;
 }
 
-.header-nav .nav-profile span {
+.headernav .navprofile span {
   font-size: 14px;
   font-weight: 600;
 }
 
-.header-nav .badge-number {
+.headernav .badge-number {
   position: absolute;
   inset: -2px -5px auto auto;
   font-weight: normal;
@@ -487,103 +487,103 @@ h6 {
   padding: 3px 6px;
 }
 
-.header-nav .notifications {
+.headernav .notifications {
   inset: 8px -15px auto auto !important;
 }
 
-.header-nav .notifications .notification-item {
+.headernav .notifications .notification-item {
   display: flex;
   align-items: center;
   padding: 15px 10px;
   transition: 0.3s;
 }
 
-.header-nav .notifications .notification-item i {
+.headernav .notifications .notification-item i {
   margin: 0 20px 0 10px;
   font-size: 24px;
 }
 
-.header-nav .notifications .notification-item h4 {
+.headernav .notifications .notification-item h4 {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 5px;
 }
 
-.header-nav .notifications .notification-item p {
+.headernav .notifications .notification-item p {
   font-size: 13px;
   margin-bottom: 3px;
   color: #919191;
 }
 
-.header-nav .notifications .notification-item:hover {
+.headernav .notifications .notification-item:hover {
   background-color: #f6f9ff;
 }
 
-.header-nav .messages {
+.headernav .messages {
   inset: 8px -15px auto auto !important;
 }
 
-.header-nav .messages .message-item {
+.headernav .messages .message-item {
   padding: 15px 10px;
   transition: 0.3s;
 }
 
-.header-nav .messages .message-item a {
+.headernav .messages .message-item a {
   display: flex;
 }
 
-.header-nav .messages .message-item img {
+.headernav .messages .message-item img {
   margin: 0 20px 0 10px;
   max-height: 40px;
 }
 
-.header-nav .messages .message-item h4 {
+.headernav .messages .message-item h4 {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 5px;
   color: #444444;
 }
 
-.header-nav .messages .message-item p {
+.headernav .messages .message-item p {
   font-size: 13px;
   margin-bottom: 3px;
   color: #919191;
 }
 
-.header-nav .messages .message-item:hover {
+.headernav .messages .message-item:hover {
   background-color: #f6f9ff;
 }
 
-.header-nav .profile {
+.headernav .profile {
   min-width: 240px;
   padding-bottom: 0;
   top: 8px !important;
 }
 
-.header-nav .profile .dropdown-header h6 {
+.headernav .profile .dropdown-header h6 {
   font-size: 18px;
   margin-bottom: 0;
   font-weight: 600;
   color: #444444;
 }
 
-.header-nav .profile .dropdown-header span {
+.headernav .profile .dropdown-header span {
   font-size: 14px;
 }
 
-.header-nav .profile .dropdown-item {
+.headernav .profile .dropdown-item {
   font-size: 14px;
   padding: 10px 15px;
   transition: 0.3s;
 }
 
-.header-nav .profile .dropdown-item i {
+.headernav .profile .dropdown-item i {
   margin-right: 10px;
   font-size: 18px;
   line-height: 0;
 }
 
-.header-nav .profile .dropdown-item:hover {
+.headernav .profile .dropdown-item:hover {
   background-color: #f6f9ff;
 }
 
@@ -648,23 +648,23 @@ h6 {
   }
 }
 
-.sidebar-nav {
+.sidebarnav {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-.sidebar-nav li {
+.sidebarnav li {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-.sidebar-nav .nav-item {
+.sidebarnav .navitem {
   margin-bottom: 5px;
 }
 
-.sidebar-nav .nav-heading {
+.sidebarnav .nav-heading {
   font-size: 11px;
   text-transform: uppercase;
   color: #899bbd;
@@ -672,7 +672,7 @@ h6 {
   margin: 10px 0 5px 15px;
 }
 
-.sidebar-nav .nav-link {
+.sidebarnav .navlink {
   display: flex;
   align-items: center;
   font-size: 15px;
@@ -684,46 +684,46 @@ h6 {
   border-radius: 4px;
 }
 
-.sidebar-nav .nav-link i {
+.sidebarnav .navlink i {
   font-size: 16px;
   margin-right: 10px;
   color: #57abcd;
 }
 
-.sidebar-nav .nav-link.collapsed {
+.sidebarnav .navlink.collapsed {
   color: #57abcd;
   background: #fff;
 }
 
-.sidebar-nav .nav-link.collapsed i {
+.sidebarnav .navlink.collapsed i {
   color: #899bbd;
 }
 
-.sidebar-nav .nav-link:hover {
+.sidebarnav .navlink:hover {
   color: #57abcd;
   background: #f6f9ff;
 }
 
-.sidebar-nav .nav-link:hover i {
+.sidebarnav .navlink:hover i {
   color: #57abcd;
 }
 
-.sidebar-nav .nav-link .bi-chevron-down {
+.sidebarnav .navlink .bi-chevron-down {
   margin-right: 0;
   transition: transform 0.2s ease-in-out;
 }
 
-.sidebar-nav .nav-link:not(.collapsed) .bi-chevron-down {
+.sidebarnav .navlink:not(.collapsed) .bi-chevron-down {
   transform: rotate(180deg);
 }
 
-.sidebar-nav .nav-content {
+.sidebarnav .nav-content {
   padding: 5px 0 0 0;
   margin: 0;
   list-style: none;
 }
 
-.sidebar-nav .nav-content a {
+.sidebarnav .nav-content a {
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -734,19 +734,19 @@ h6 {
   transition: 0.3s;
 }
 
-.sidebar-nav .nav-content a i {
+.sidebarnav .nav-content a i {
   font-size: 6px;
   margin-right: 8px;
   line-height: 0;
   border-radius: 50%;
 }
 
-.sidebar-nav .nav-content a:hover,
-.sidebar-nav .nav-content a.active {
+.sidebarnav .nav-content a:hover,
+.sidebarnav .nav-content a.active {
   color: #57abcd;
 }
 
-.sidebar-nav .nav-content a.active i {
+.sidebarnav .nav-content a.active i {
   background-color: #57abcd;
 }
 

@@ -119,7 +119,7 @@ function Register() {
                           />
                           <label className="form-check-label" for="acceptTerms">
                             I agree and accept the
-                            <Link to="/terms">terms and conditions</Link>
+                            <Link to="/terms"> terms and conditions</Link>
                           </label>
                           <div className="invalid-feedback">
                             You must agree before submitting.
