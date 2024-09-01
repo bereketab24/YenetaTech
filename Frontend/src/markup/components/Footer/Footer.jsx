@@ -13,10 +13,11 @@ function Footer() {
               <div class="footer-contact pt-3">
                 <p>Addis Ababa, Ethiopia</p>
                 <p class="mt-3">
-                  <strong>Phone:</strong> <span>+251955281000</span>
+                  <strong>Phone:</strong> <a href="tel:+251955281000">+251-55-28-1000</a>
                 </p>
                 <p>
-                  <strong>Email:</strong> <span>info@yeneta.com</span>
+                  <strong>Email:</strong>{" "}
+                  <a href="mailto:info@yenetatech.com">info@yenetatech.com</a>
                 </p>
               </div>
               <div class="social-links d-flex mt-4">

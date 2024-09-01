@@ -12,21 +12,17 @@ function Home() {
           <img src={banner1} alt="" data-aos="fade-in" />
 
           <div className="container">
-            <h2 data-aos="fade-up" data-aos-delay="100">
+            <h2 >
               From Ethiopians,
               <br />
               To Ethiopians
             </h2>
-            <p data-aos="fade-up" data-aos-delay="200">
+            <p>
               We are team of talented software developers making an impact on
-              our country's journey towards digitalized{" "}
-              <strong>Ethiopia</strong>
+              our country's journey towards digitalized
+              <strong> Ethiopia</strong>
             </p>
-            <div
-              className="d-flex mt-4"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
+            <div className="d-flex mt-4">
               <Link to="/register" className="btn-get-started">
                 Get Started
               </Link>
@@ -39,17 +35,11 @@ function Home() {
             <div className="row gy-4">
               <div
                 className="col-lg-6 order-1 order-lg-2"
-                data-aos="fade-up"
-                data-aos-delay="100"
               >
                 <img src={about1} className="img-fluid" alt="" />
               </div>
 
-              <div
-                className="col-lg-6 order-2 order-lg-1 content"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
+              <div className="col-lg-6 order-2 order-lg-1 content">
                 <h3>About Us</h3>
                 <p className="fst-italic">
                   We are talented developers dedicated to spread digital
@@ -76,28 +66,24 @@ function Home() {
                     </span>
                   </li>
                 </ul>
-                <a href="about.html" className="read-more">
+                <Link to="/about" className="read-more">
                   <span>Read More</span>
                   <i className="bi bi-arrow-right"></i>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
         </section>
 
         <section id="courses" className="courses section">
-          <div className="container section-title" data-aos="fade-up">
+          <div className="container section-title">
             <h2>Courses</h2>
             <p>Popular Courses</p>
           </div>
 
           <div className="container">
             <div className="row">
-              <div
-                className="col-lg-4 col-md-6 d-flex align-items-center mb-3 mb-lg-0"
-                data-aos="zoom-in"
-                data-aos-delay="100"
-              >
+              <div className="col-lg-4 col-md-6 d-flex align-items-center mb-3 mb-lg-0">
                 <div className="course-item shadow">
                   <img src={course1} className="img-fluid" alt="..." />
                   <div className="course-content">
@@ -106,7 +92,7 @@ function Home() {
                     </div>
 
                     <h3>
-                      <a href="course-details.html">MERN Stack</a>
+                      <Link to="/:courseID">MERN Stack</Link>
                     </h3>
                     <p className="description">
                       Full-Stack (MERN) Web Development from scratch.
@@ -114,9 +100,9 @@ function Home() {
                     </p>
                     <div className="pricing">
                       <div className="btn-wrap">
-                        <a href="#" className="btn-buy">
+                        <Link to="/enroll" className="btn-buy">
                           Enroll
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -125,8 +111,6 @@ function Home() {
 
               <div
                 className="col-lg-4 col-md-6 d-flex align-items-center mb-3 mb-lg-0"
-                data-aos="zoom-in"
-                data-aos-delay="100"
               >
                 <div className="course-item shadow">
                   <img src={course1} className="img-fluid" alt="..." />
@@ -136,7 +120,7 @@ function Home() {
                     </div>
 
                     <h3>
-                      <a href="course-details.html">Figma</a>
+                      <Link to="/:courseID">Figma</Link>
                     </h3>
                     <p className="description">
                       Web design using Figma from scratch.
@@ -144,9 +128,9 @@ function Home() {
                     </p>
                     <div className="pricing">
                       <div className="btn-wrap">
-                        <a href="index.html" className="btn-buy">
+                        <Link to="/enroll" className="btn-buy">
                           Enroll
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -155,8 +139,6 @@ function Home() {
 
               <div
                 className="col-lg-4 col-md-6 d-flex align-items-center mb-3 mb-lg-0"
-                data-aos="zoom-in"
-                data-aos-delay="100"
               >
                 <div className="course-item shadow">
                   <img src={course1} className="img-fluid" alt="..." />
@@ -166,7 +148,7 @@ function Home() {
                     </div>
 
                     <h3>
-                      <a href="course-details.html">MERN Stack</a>
+                      <Link to="/courseID">MERN Stack</Link>
                     </h3>
                     <p className="description">
                       Full-Stack (MERN) Web Development from scratch.
@@ -174,9 +156,9 @@ function Home() {
                     </p>
                     <div className="pricing">
                       <div className="btn-wrap">
-                        <a href="#" className="btn-buy">
+                        <Link to="/enroll" className="btn-buy">
                           Enroll
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>

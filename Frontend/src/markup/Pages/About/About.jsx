@@ -17,7 +17,7 @@ function About() {
                 <p className="mb-0">
                   We are team of talented software developers making an impact
                   on our country's journey towards digitalized
-                  <strong>Ethiopia</strong>
+                  <strong> Ethiopia</strong>
                 </p>
               </div>
             </div>
