@@ -1,105 +1,121 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <>
-      <footer id="footer" class="footer position-relative light-background">
-        <div class="container footer-top">
-          <div class="row gy-4">
-            <div class="col-lg-5 col-md-6 footer-about">
-              <a href="index.html" class="logo d-flex align-items-center">
-                <span class="sitename">Yeneta</span>
-              </a>
-              <div class="footer-contact pt-3">
+      <footer id="footer" className="footer position-relative light-background">
+        <div className="container footer-top">
+          <div className="row gy-4">
+            <div className="col-lg-5 col-md-6 footer-about">
+              <Link to="index.html" className="logo d-flex align-items-center">
+                <span className="sitename">Yeneta</span>
+              </Link>
+              <div className="footer-contact pt-3">
                 <p>Addis Ababa, Ethiopia</p>
-                <p class="mt-3">
-                  <strong>Phone:</strong> <a href="tel:+251955281000">+251-55-28-1000</a>
+                <p className="mt-3">
+                  <strong>Phone:</strong>{" "}
+                  <Link to="tel:+251955281000" target="_blank">
+                    +251-55-28-1000
+                  </Link>
                 </p>
                 <p>
                   <strong>Email:</strong>{" "}
-                  <a href="mailto:info@yenetatech.com">info@yenetatech.com</a>
+                  <Link to="mailto:info@yenetatech.com" target="_blank">
+                    info@yenetatech.com
+                  </Link>
                 </p>
               </div>
-              <div class="social-links d-flex mt-4">
-                <a href="">
-                  <i class="bi bi-twitter-x"></i>
-                </a>
-                <a href="">
-                  <i class="bi bi-facebook"></i>
-                </a>
-                <a href="">
-                  <i class="bi bi-instagram"></i>
-                </a>
-                <a href="">
-                  <i class="bi bi-linkedin"></i>
-                </a>
+              <div className="social-links d-flex mt-4">
+                <Link to="https://x.com/bereketab24" target="_blank">
+                  <i className="bi bi-twitter-x"></i>
+                </Link>
+                <Link
+                  to="https://www.reddit.com/user/Bereketab24/"
+                  target="_blank"
+                >
+                  <i className="bi bi-reddit"></i>
+                </Link>
+                <Link
+                  to="https://discord.com/users/1279696113632411650"
+                  target="_blank"
+                >
+                  <i className="bi bi-discord"></i>
+                </Link>
+                <Link to="www.linkedin.com/in/bereketab24" target="_blank">
+                  <i className="bi bi-linkedin"></i>
+                </Link>
               </div>
             </div>
 
-            <div class="col-lg-5 col-md-3 footer-links">
+            <div className="col-lg-5 col-md-3 footer-links">
               <h4>Useful Links</h4>
               <ul>
                 <li>
-                  <a href="#">Home</a>
+                  <Link to="/" target="_blank">
+                    Home
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">About us</a>
+                  <Link to="/about" target="_blank">
+                    About us
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">Services</a>
+                  <Link to="/courses" target="_blank">
+                    Courses
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">Terms of service</a>
+                  <Link to="/term" target="_blank">
+                    Terms of service
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">Privacy policy</a>
+                  <Link to="/privacy" target="_blank">
+                    Privacy policy
+                  </Link>
                 </li>
               </ul>
             </div>
 
-            <div class="col-lg-2 col-md-3 footer-links">
-              <h4>Our Services</h4>
+            <div className="col-lg-2 col-md-3 footer-links">
+              <h4>Our Courses</h4>
               <ul>
                 <li>
-                  <a href="#">Web Design</a>
+                  <Link to="/:courseID">Web Design</Link>
                 </li>
                 <li>
-                  <a href="#">Web Development</a>
+                  <Link to="/:CourseID">Web Development</Link>
                 </li>
                 <li>
-                  <a href="#">Product Management</a>
+                  <Link to="/:CourseID">Product Management</Link>
                 </li>
                 <li>
-                  <a href="#">Digital Marketing</a>
+                  <Link to="/:CourseID">Digital Marketing</Link>
                 </li>
                 <li>
-                  <a href="#">Graphic Design</a>
+                  <Link to="/:CourseID">Graphic Design</Link>
                 </li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div class="container copyright text-center mt-4">
+        <div className="container copyright text-center mt-4">
           <p>
             © <span>Copyright</span>
-            <strong class="px-1 sitename">Yeneta Tech</strong>
+            <strong className="px-1 sitename">Yeneta Tech</strong>
             <span>All Rights Reserved</span> <br />
             <span>
               Developed by <strong>Bereketab</strong>
             </span>
           </p>
-          <div class="credits">
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          <div className="credits">
+            Designed by{" "}
+            <Link to="https://bootstrapmade.com/">BootstrapMade</Link>
           </div>
         </div>
-        <a
-          href="#"
-          id="scroll-top"
-          class="scroll-top d-flex align-items-center justify-content-center"
-        >
-          <i class="bi bi-arrow-up-short"></i>
-        </a>
       </footer>
     </>
   );
