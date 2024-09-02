@@ -92,7 +92,7 @@ function Home() {
                     </div>
 
                     <h3>
-                      <Link to="/:courseID">MERN Stack</Link>
+                      <Link to="/courses/:courseID">MERN Stack</Link>
                     </h3>
                     <p className="description">
                       Full-Stack (MERN) Web Development from scratch.
@@ -120,7 +120,7 @@ function Home() {
                     </div>
 
                     <h3>
-                      <Link to="/:courseID">Figma</Link>
+                      <Link to="/courses/:courseID">Figma</Link>
                     </h3>
                     <p className="description">
                       Web design using Figma from scratch.
@@ -148,7 +148,7 @@ function Home() {
                     </div>
 
                     <h3>
-                      <Link to="/courseID">MERN Stack</Link>
+                      <Link to="/courses/:courseID">MERN Stack</Link>
                     </h3>
                     <p className="description">
                       Full-Stack (MERN) Web Development from scratch.

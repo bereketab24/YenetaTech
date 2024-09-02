@@ -8,10 +8,13 @@ import Courses from "./markup/Pages/Courses/Courses.jsx";
 import About from "./markup/Pages/About/About.jsx";
 import Contact from "./markup/Pages/Contact/Contact.jsx";
 import CourseDetails from "./markup/Pages/CourseDetails/CourseDetails.jsx";
-import Admin from "./markup/Pages/Admin/Admin.jsx";
 import "./assets/styles/public/main.css"
 import "./assets/styles/public/bootstrap-icons.css";
 import "./assets/styles/public/bootstrap.min.css";
+import PublicLayout from "./markup/components/PublicLayout/PublicLayout.jsx";
+import AdminLayout from "./markup/components/AdminLayout/AdminLayout.jsx";
+import Dashboard from "./markup/Pages/Admin/Dashboard/Dashboard.jsx";
+import Notfound from "./markup/Pages/Notfound/Notfound.jsx";
 
 
 
@@ -19,18 +22,22 @@ import "./assets/styles/public/bootstrap.min.css";
 function App() {
   return (
     <>
-      {/* <Header/> */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/courses" element= {<Courses/>} />
-        <Route path="/about" element= {<About/>} />
-        <Route path="/contact" element= {<Contact/>} />
-        <Route path="/:courseID" element={<CourseDetails/>} />
-        <Route path="/admin" element={<Admin/>}/>
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/courses/:courseID" element={<CourseDetails />} />
+          <Route path="*" element={<Notfound/>}/>
+        </Route>
+        <Route element={<AdminLayout/>}>
+          {/* <Route index element={<Dashboard/>}/> */}
+          <Route path="/admin" element={<Dashboard/>}/>
+        </Route>
       </Routes>
-      {/* <Footer/> */}
     </>
   );
 }

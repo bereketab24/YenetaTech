@@ -3,7 +3,6 @@ import adminstyle from "../../../../assets/styles/user/user.module.css"
 import adlogo from "../../../../assets/images/logoYc.png"
 import profile from "../../../../assets/images/profile.jpg"
 import { Link } from "react-router-dom";
-import AdminSide from "../AdminSide/AdminSide";
 
 function AdminHeader() {
   return (
@@ -93,8 +92,6 @@ function AdminHeader() {
           </ul>
         </nav>
       </header>
-      <AdminSide/>
-      
     </>
   );
 }
