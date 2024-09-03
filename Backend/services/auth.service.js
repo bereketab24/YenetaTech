@@ -2,6 +2,7 @@
 const bcrypt = require("bcrypt");
 const db = require("../config/database");
 
+// service for sign up
 exports.register = async (userData) => {
     try {
       const { fullname, username, email, password } = userData;
