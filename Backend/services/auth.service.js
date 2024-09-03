@@ -25,6 +25,7 @@ exports.register = async (userData) => {
     }
 };
 
+// Service for login
 exports.login = async (loginData) => {
   const { email, password } = loginData;
   const sql = "SELECT * FROM users WHERE email = ?";
