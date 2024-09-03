@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function AdminHeader() {
   return (
     <>
-      <header id="header" className={`${adminstyle.header} fixed-top d-flex align-items-center"`}>
+      <header id="header" className={`${adminstyle.header} fixed-top d-flex align-items-center mb-5`}>
         <div className="d-flex align-items-center justify-content-between">
           <Link to="/" className={`${adminstyle.logo} d-flex align-items-center`}>
             <img src={adlogo} alt="" />

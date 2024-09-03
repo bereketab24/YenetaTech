@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 function AdminSide() {
   return (
     <>
-      <aside id="sidebar" className={`${adminstyle.sidebar} d-none`}>
+      <aside id="sidebar" className={`${adminstyle.sidebar} `}>
         <ul className={`${adminstyle.sidebarnav} `} id="sidebarnav">
           <li className={`${adminstyle.navitem}`}>
             <NavLink className={`${adminstyle.navlink} `} to="/admin">

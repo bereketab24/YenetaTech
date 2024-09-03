@@ -3,7 +3,7 @@ import adminstyle from "../../../../assets/styles/user/user.module.css";
 
 function AdminFooter() {
   return (
-    <body>
+    <body className={`${adminstyle.body}`}>
       <footer id="footer" className={`${adminstyle.footer}`}>
         <div className={`${adminstyle.copyright}`}>
           &copy; Copyright{" "}
