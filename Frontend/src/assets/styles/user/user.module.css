@@ -8,7 +8,7 @@
 .white {
   background-color: white;
 }
-.wrapping {
+/* .wrapping {
   padding-left: 20px;
   padding-right: 20px;
   margin-right: 20px;
@@ -16,7 +16,7 @@
 }
 .hpro {
   padding-top: 65px;
-}
+} */
 
 .body {
   font-family: "Open Sans", sans-serif;
@@ -49,14 +49,14 @@ h6 {
 /*--------------------------------------------------------------
 # Main
 --------------------------------------------------------------*/
-#main {
+.main {
   margin-top: 60px;
   padding: 20px 30px;
   transition: all 0.3s;
 }
 
 @media (max-width: 1199px) {
-  #main {
+  .main {
     padding: 20px;
   }
 }
@@ -638,7 +638,7 @@ h6 {
 }
 
 @media (min-width: 1200px) {
-  #main,
+  .main,
   #footer {
     margin-left: 300px;
   }
@@ -651,7 +651,7 @@ h6 {
 }
 
 @media (min-width: 1200px) {
-  .toggle-sidebar #main,
+  .toggle-sidebar .main,
   .toggle-sidebar #footer {
     margin-left: 0;
   }

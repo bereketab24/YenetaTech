@@ -6,7 +6,7 @@ function Dashboard() {
   return (
     <div className={`${adminstyle.body} ${adminstyle.hpro}`}>
       <body className={`${adminstyle.body} ${adminstyle.wrapping}`}>
-        <main id="main" className="main">
+        <main id="main" className={`${adminstyle.main}`}>
           <div className={`${adminstyle.pagetitle}`}>
             <h1>Dashboard</h1>
             <nav>
