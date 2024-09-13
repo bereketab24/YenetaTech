@@ -2,8 +2,76 @@ import React from "react";
 import { Link } from "react-router-dom";
 import classes from "../../../assets/styles/user/user.module.css";
 import logo1 from "../../../assets/images/logoYc.png";
+import { useState } from "react";
 
 function Register() {
+  const [full_name, setFullname] = useState("")
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+
+  // Frontend Error handler
+  const [fullnamerequired, setFullnamerequired] = useState("")
+  const [usernamerequired, setUsernamerequired] = useState("")
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [serverError, setServerError] = useState("");
+
+  const handlesubmit = (e) => {
+    e.preventDefault();
+    let valid = true //flag
+
+    if(!full_name){
+      setFullnamerequired("Please provide your Full-name!");
+      valid = false
+    }else{
+      setFullnamerequired("")
+    }
+    if(!username){
+      setUsernamerequired("Please provide your username!")
+      valid = false
+    }else{
+      setUsernamerequired("")
+    }
+    if(!email){
+      setEmailError("Please provide your email!");
+      valid = false
+    }else if(!email.includes("@")){
+      setEmailError("Invalid email format!")
+    }else{
+      const regex = /^\S+@\S+\.\S+$/;
+      if(!regex.test(email)){
+        setEmailError("Invalid email format!")
+        valid = false
+      }else{
+        setEmailError("")
+      }
+    }
+    if(!password){
+      setPasswordError("Please enter your password!")
+      valid = false
+    }else {
+      const regex = /^(?=.*\d).{8,}$/;
+      if(!regex.text(password)){
+        setPasswordError("Password must be at least 8 characters and contain a number!");
+        valid = false
+      }else{
+        setPasswordError("")
+      }
+    }
+    if(!valid){
+      return
+    }
+    const form = {
+      full_name,
+      username,
+      email,
+      password
+    }
+  }
+
   return (
     <>
       <div className="container">

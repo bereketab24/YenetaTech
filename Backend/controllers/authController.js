@@ -4,7 +4,7 @@ const dbModels = require("../models/dbModels");
 
 exports.register = async (req, res) => {
   console.log("Register request received");
-  const { username, email, password, roleId } = req.body;
+  const { fullname, username, email, password, roleId } = req.body;
   // email, password, name;
   console.log("Received data:", req.body);
 
