@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios"
+import { useHistory } from "react-router-dom"
 import { Link } from "react-router-dom";
 import classes from "../../../assets/styles/user/user.module.css";
 import logo1 from "../../../assets/images/logoYc.png";
@@ -9,7 +11,7 @@ function Register() {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-
+  const history = useHistory()
 
   // Frontend Error handler
   const [fullnamerequired, setFullnamerequired] = useState("")
@@ -64,7 +66,7 @@ function Register() {
     if(!valid){
       return
     }
-    const form = {
+    const formdata = {
       full_name,
       username,
       email,
