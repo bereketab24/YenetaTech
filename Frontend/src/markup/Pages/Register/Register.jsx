@@ -21,7 +21,7 @@ function Register() {
   const [success, setSuccess] = useState(false);
   const [serverError, setServerError] = useState("");
 
-  const handlesubmit = (e) => {
+  const handlesubmit = async (e) => {
     e.preventDefault();
     let valid = true //flag
 
@@ -71,6 +71,15 @@ function Register() {
       username,
       email,
       password
+    }
+
+    try {
+      const registration = await axios.post("/register", formdata)
+      history.push("/login")
+      
+    } catch (error) {
+      setServerError("Registration Failed!")
+      
     }
   }
 
