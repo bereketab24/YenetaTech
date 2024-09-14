@@ -1,87 +1,84 @@
-import React from "react";
-import axios from "axios"
-import { useHistory } from "react-router-dom"
-import { Link } from "react-router-dom";
-import classes from "../../../assets/styles/user/user.module.css";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { register } from "../../../Services/auth.services";
 import logo1 from "../../../assets/images/logoYc.png";
-import { useState } from "react";
+import classes from "../../../assets/styles/user/user.module.css";
 
 function Register() {
-  const [full_name, setFullname] = useState("")
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const history = useHistory()
+  const [full_name, setFullname] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  // Frontend Error handler
-  const [fullnamerequired, setFullnamerequired] = useState("")
-  const [usernamerequired, setUsernamerequired] = useState("")
+  const [fullnamerequired, setFullnamerequired] = useState("");
+  const [usernamerequired, setUsernamerequired] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [success, setSuccess] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false);
   const [serverError, setServerError] = useState("");
 
-  const handlesubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    let valid = true //flag
+    let valid = true;
 
-    if(!full_name){
-      setFullnamerequired("Please provide your Full-name!");
-      valid = false
-    }else{
-      setFullnamerequired("")
+    if (!full_name) {
+      setFullnamerequired("Please provide your Full Name!");
+      valid = false;
+    } else {
+      setFullnamerequired("");
     }
-    if(!username){
-      setUsernamerequired("Please provide your username!")
-      valid = false
-    }else{
-      setUsernamerequired("")
+
+    if (!username) {
+      setUsernamerequired("Please provide your Username!");
+      valid = false;
+    } else {
+      setUsernamerequired("");
     }
-    if(!email){
-      setEmailError("Please provide your email!");
-      valid = false
-    }else if(!email.includes("@")){
-      setEmailError("Invalid email format!")
-    }else{
-      const regex = /^\S+@\S+\.\S+$/;
-      if(!regex.test(email)){
-        setEmailError("Invalid email format!")
-        valid = false
-      }else{
-        setEmailError("")
-      }
+
+    if (!email) {
+      setEmailError("Please provide your Email!");
+      valid = false;
+    } else if (!email.includes("@")) {
+      setEmailError("Invalid email format!");
+      valid = false;
+    } else {
+      setEmailError("");
     }
-    if(!password){
-      setPasswordError("Please enter your password!")
-      valid = false
-    }else {
-      const regex = /^(?=.*\d).{8,}$/;
-      if(!regex.text(password)){
-        setPasswordError("Password must be at least 8 characters and contain a number!");
-        valid = false
-      }else{
-        setPasswordError("")
-      }
+
+    if (!password) {
+      setPasswordError("Please enter your Password!");
+      valid = false;
+    } else if (password.length < 8 || !/\d/.test(password)) {
+      setPasswordError("Password must be at least 8 characters and contain a number!");
+      valid = false;
+    } else {
+      setPasswordError("");
     }
-    if(!valid){
-      return
+        if (!termsAccepted) {
+      setTermsAccepted(false);
+      valid = false;
     }
-    const formdata = {
+    }
+
+    if (!valid) {
+      return;
+    }
+
+    const formData = {
       full_name,
       username,
       email,
-      password
-    }
+      password,
+    };
 
     try {
-      const registration = await axios.post("/register", formdata)
-      history.push("/login")
-      
-    } catch (error) {
-      setServerError("Registration Failed!")
-      
+      const userData = await register(formData);
+      navigate("/login");
+    } catch (err) {
+      setServerError(err.message);
     }
-  }
+  };
 
   return (
     <>
@@ -95,7 +92,7 @@ function Register() {
                     to="/"
                     className={`${classes.logo} d-flex align-items-center w-auto`}
                   >
-                    <img src={logo1} alt="" />
+                    <img src={logo1} alt="Yeneta Tech" />
                     <span className="d-none d-lg-block">Yeneta Tech</span>
                   </Link>
                 </div>
@@ -109,45 +106,51 @@ function Register() {
                         Create an Account
                       </h5>
                       <p className="text-center small">
-                        Enter your personal details to create account
+                        Enter your personal details to create an account
                       </p>
                     </div>
 
-                    <form className="row g-3 needs-validation" novalidate>
+                    <form
+                      onSubmit={handleSubmit}
+                      className="row g-3"
+                      noValidate
+                    >
                       <div className="col-12">
-                        <label for="yourName" className="form-label">
+                        <label htmlFor="yourName" className="form-label">
                           Your Name
                         </label>
                         <input
                           type="text"
-                          name="name"
-                          className="form-control"
+                          value={full_name}
+                          onChange={(e) => setFullname(e.target.value)}
+                          className={`form-control ${
+                            fullnamerequired ? "is-invalid" : ""
+                          }`}
                           id="yourName"
-                          required
                         />
                         <div className="invalid-feedback">
-                          Please, enter your name!
+                          {fullnamerequired}
                         </div>
                       </div>
 
                       <div className="col-12">
-                        <label for="yourEmail" className="form-label">
+                        <label htmlFor="yourEmail" className="form-label">
                           Your Email
                         </label>
                         <input
                           type="email"
-                          name="email"
-                          className="form-control"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className={`form-control ${
+                            emailError ? "is-invalid" : ""
+                          }`}
                           id="yourEmail"
-                          required
                         />
-                        <div className="invalid-feedback">
-                          Please enter a valid Email adddress!
-                        </div>
+                        <div className="invalid-feedback">{emailError}</div>
                       </div>
 
                       <div className="col-12">
-                        <label for="yourUsername" className="form-label">
+                        <label htmlFor="yourUsername" className="form-label">
                           Username
                         </label>
                         <div className="input-group has-validation">
@@ -159,61 +162,74 @@ function Register() {
                           </span>
                           <input
                             type="text"
-                            name="username"
-                            className="form-control"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            className={`form-control ${
+                              usernamerequired ? "is-invalid" : ""
+                            }`}
                             id="yourUsername"
-                            required
                           />
                           <div className="invalid-feedback">
-                            Please choose a username.
+                            {usernamerequired}
                           </div>
                         </div>
                       </div>
 
                       <div className="col-12">
-                        <label for="yourPassword" className="form-label">
+                        <label htmlFor="yourPassword" className="form-label">
                           Password
                         </label>
                         <input
                           type="password"
-                          name="password"
-                          className="form-control"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          className={`form-control ${
+                            passwordError ? "is-invalid" : ""
+                          }`}
                           id="yourPassword"
-                          required
                         />
-                        <div className="invalid-feedback">
-                          Please enter your password!
-                        </div>
+                        <div className="invalid-feedback">{passwordError}</div>
                       </div>
 
+                      {/* <div className="col-12">
+                        <div className="form-check">
+                          <input className={`form-check-input `} type="checkbox" id="acceptTerms" required />
+                          <label className="form-check-label" htmlFor="acceptTerms">I agree and accept the <Link to="/terms">terms and conditions</Link></label>
+                          <div className="invalid-feedback">You must agree before submitting.</div>
+                        </div>
+                      </div> */}
                       <div className="col-12">
                         <div className="form-check">
                           <input
                             className="form-check-input"
-                            name="terms"
                             type="checkbox"
-                            value=""
                             id="acceptTerms"
+                            onChange={(e) => setTermsAccepted(e.target.checked)}
                             required
                           />
-                          <label className="form-check-label" for="acceptTerms">
-                            I agree and accept the
-                            <Link to="/terms"> terms and conditions</Link>
+                          <label
+                            className="form-check-label"
+                            htmlFor="acceptTerms"
+                          >
+                            I agree and accept the{" "}
+                            <Link to="/terms">terms and conditions</Link>
                           </label>
                           <div className="invalid-feedback">
                             You must agree before submitting.
                           </div>
                         </div>
                       </div>
+
                       <div className="col-12">
                         <button className="btn btn-primary w-100" type="submit">
                           Create Account
                         </button>
                       </div>
+
                       <div className="col-12">
                         <p className="small mb-0">
-                          Already have an account?
-                          <Link to="/login"> Log in</Link>
+                          Already have an account?{" "}
+                          <Link to="/login">Log in</Link>
                         </p>
                       </div>
                     </form>
