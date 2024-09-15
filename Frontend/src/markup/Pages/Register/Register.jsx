@@ -191,7 +191,7 @@ function Register() {
                         <div className="invalid-feedback">{passwordError}</div>
                       </div>
 
-                      {/* <div className="col-">
+                      {/* <div className="col-12">
                         <div className="form-check">
                           <input className={`form-check-input `} type="checkbox" id="acceptTerms" required />
                           <label className="form-check-label" htmlFor="acceptTerms">I agree and accept the <Link to="/terms">terms and conditions</Link></label>
