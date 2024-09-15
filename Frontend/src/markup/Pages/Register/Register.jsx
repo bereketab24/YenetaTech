@@ -196,8 +196,8 @@ function Register() {
                           <input className={`form-check-input `} type="checkbox" id="acceptTerms" required />
                           <label className="form-check-label" htmlFor="acceptTerms">I agree and accept the <Link to="/terms">terms and conditions</Link></label>
                           <div className="invalid-feedback">You must agree before submitting.</div>
-                        </div>
-                      <> */}
+                        </di>
+                      </div> */}
                       <div className="col-12">
                         <div className="form-check">
                           <input
