@@ -9,13 +9,14 @@ function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [termsAccepted, setTermsAccepted] = useState(false);
   const navigate = useNavigate();
 
   const [fullnamerequired, setFullnamerequired] = useState("");
   const [usernamerequired, setUsernamerequired] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [termsAcceptedError, setTermsAcceptedError] = useState("");
   const [serverError, setServerError] = useState("");
 
   const handleSubmit = async (e) => {
@@ -50,15 +51,18 @@ function Register() {
       setPasswordError("Please enter your Password!");
       valid = false;
     } else if (password.length < 8 || !/\d/.test(password)) {
-      setPasswordError("Password must be at least 8 characters and contain a number!");
+      setPasswordError(
+        "Password must be at least 8 characters and contain a number!"
+      );
       valid = false;
     } else {
       setPasswordError("");
     }
-        if (!termsAccepted) {
-      setTermsAccepted(false);
+    if (!termsAccepted) {
+      setTermsAcceptedError("You must agree before submitting.");
       valid = false;
-    }
+    } else {
+      setTermsAcceptedError("");
     }
 
     if (!valid) {
@@ -191,21 +195,16 @@ function Register() {
                         <div className="invalid-feedback">{passwordError}</div>
                       </div>
 
-                      {/* <div className="col-12">
-                        <div className="form-check">
-                          <input className={`form-check-input `} type="checkbox" id="acceptTerms" required />
-                          <label className="form-check-label" htmlFor="acceptTerms">I agree and accept the <Link to="/terms">terms and conditions</Link></label>
-                          <div className="invalid-feedback">You must agree before submitting.</div>
-                        </div>
-                      </div */}
+
                       <div className="col-12">
                         <div className="form-check">
                           <input
-                            className="form-check-input"
+                            className={`form-check-input ${
+                              termsAcceptedError ? "is-invalid" : ""
+                            }`}
                             type="checkbox"
                             id="acceptTerms"
                             onChange={(e) => setTermsAccepted(e.target.checked)}
-                            required
                           />
                           <label
                             className="form-check-label"
@@ -214,9 +213,11 @@ function Register() {
                             I agree and accept the{" "}
                             <Link to="/terms">terms and conditions</Link>
                           </label>
-                          <div className="invalid-feedback">
-                            You must agree before submitting.
-                          </div>
+                          {termsAcceptedError && (
+                            <div className="invalid-feedback">
+                              {termsAcceptedError}
+                            </div>
+                          )}
                         </div>
                       </div>
 
