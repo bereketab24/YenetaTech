@@ -18,9 +18,9 @@ exports.register = async (userData) => {
         const values = [fullname ,username, email, hashedPassword, studentRoleId];
 
         const [result] = await db.query(sql, values);
-        return { id: result.insertId, username, email, roleId: studentRoleId };
+        return { id: result.insertId, fullname, username, email, roleId: studentRoleId };
     } catch (error) {
-        console.error("Error during registration:", error.message);  // Debugging line
+        // console.error("Error during registration:", error.message);  // Debugging line
         throw new Error('Registration failed: ' + error.message);
     }
 };

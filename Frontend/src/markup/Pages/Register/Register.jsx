@@ -5,7 +5,7 @@ import logo1 from "../../../assets/images/logoYc.png";
 import classes from "../../../assets/styles/user/user.module.css";
 
 function Register() {
-  const [full_name, setFullname] = useState("");
+  const [fullname, setFullname] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +23,7 @@ function Register() {
     e.preventDefault();
     let valid = true;
 
-    if (!full_name) {
+    if (!fullname) {
       setFullnamerequired("Please provide your Full Name!");
       valid = false;
     } else {
@@ -70,7 +70,7 @@ function Register() {
     }
 
     const formData = {
-      full_name,
+      fullname,
       username,
       email,
       password,
@@ -79,9 +79,30 @@ function Register() {
     try {
       const userData = await register(formData);
       navigate("/login");
-    } catch (err) {
-      setServerError(err.message);
+    } catch (error) {
+      console.log("Error response from server:", error.message);
+      let errorMessage = "An error occurred. Please try again later.";
+
+      if (error.message) {
+        errorMessage = error.message;
+      }
+
+      setServerError(errorMessage);
     }
+
+      
+  //     let errorMessage = "An error occurred. Please try again later.";
+
+  // if (error.response && error.response.data && error.response.data.message) {
+  //   errorMessage = error.response.data.message;
+  // } else if (error.response && error.response.data && error.response.data.error) {
+  //   errorMessage = error.response.data.error;
+  // } else if (error.response && error.response.data && error.response.data.message) {
+  //   errorMessage = error.response.data.message;
+  // }
+
+  // setServerError(errorMessage);
+    
   };
 
   return (
@@ -113,6 +134,11 @@ function Register() {
                         Enter your personal details to create an account
                       </p>
                     </div>
+                    {serverError && (
+                      <div className="alert alert-danger" role="alert">
+                        {serverError}
+                      </div>
+                    )}
 
                     <form
                       onSubmit={handleSubmit}
@@ -125,7 +151,7 @@ function Register() {
                         </label>
                         <input
                           type="text"
-                          value={full_name}
+                          value={fullname}
                           onChange={(e) => setFullname(e.target.value)}
                           className={`form-control ${
                             fullnamerequired ? "is-invalid" : ""
@@ -194,7 +220,6 @@ function Register() {
                         />
                         <div className="invalid-feedback">{passwordError}</div>
                       </div>
-
 
                       <div className="col-12">
                         <div className="form-check">

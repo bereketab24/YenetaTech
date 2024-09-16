@@ -17,7 +17,6 @@ const { isAuthenticated } = require("./middlewares/authMiddleware");
 const { handleErrors } = require("./middlewares/errorHandler");
 const { isAdmin } = require("./middlewares/roleMiddleware");
 
-
 // Import routes
 const routes = require("./routes"); // This imports from 'routes/index.js'
 const installRoutes = require("./routes/install");
@@ -45,8 +44,6 @@ app.use(helmet());
 // HTTP request logger middleware for logging requests in the 'dev' format
 app.use(morgan("dev"));
 
-
-
 // -------------------- Routes Setup -------------------- //
 
 // Use the imported routes
@@ -60,9 +57,7 @@ app.use((req, res, next) => {
 });
 
 // Global Error Handler
-app.use(handleErrors); 
-
-
+app.use(handleErrors);
 
 // -------------------- Start the Server -------------------- //
 
