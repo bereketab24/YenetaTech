@@ -1,9 +1,12 @@
 import axios from "axios";
+import dotenv from "dotenv"
 
+dotenv.config()
+const backend_api = process.env.BACKEND_API_URL;
 export const register = async (formdata) => {
   try {
     const response = await axios.post(
-      "http://localhost:3000/auth/register",
+      `${backend_api}/auth/register`,
       formdata
     );
     console.log(response.data);
@@ -18,12 +21,12 @@ export const register = async (formdata) => {
 export const login = async (formdata) => {
   try {
     const response = await axios.post(
-      "http://localhost:3000/auth/login",
+      `${backend_api}/auth/login`,
       formdata
     );
     return response.data; // Contains user data and token/session info
     console.log(formdata);
   } catch (error) {
-    throw new Error(error.response.data.message || "Registration failed");
+    throw new Error(error.response.data.message || "Login failed");
   }
 };

@@ -1,9 +1,97 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { login } from "../../../Services/auth.services";
 import classes from "../../../assets/styles/user/user.module.css";
 import logo1 from "../../../assets/images/logoYc.png";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const navigate = useNavigate();
+
+  //Error handling
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [termsAcceptedError, setTermsAcceptedError] = useState("");
+  const [serverError, setServerError] = useState("");
+
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      let valid = true;
+
+      if (!fullname) {
+        setFullnamerequired("Please provide your Full Name!");
+        valid = false;
+      } else {
+        setFullnamerequired("");
+      }
+
+      if (!username) {
+        setUsernamerequired("Please provide your Username!");
+        valid = false;
+      } else {
+        setUsernamerequired("");
+      }
+
+      if (!email) {
+        setEmailError("Please provide your Email!");
+        valid = false;
+      } else if (!email.includes("@")) {
+        setEmailError("Invalid email format!");
+        valid = false;
+      } else {
+        setEmailError("");
+      }
+
+      if (!password) {
+        setPasswordError("Please enter your Password!");
+        valid = false;
+      } else if (password.length < 8 || !/\d/.test(password)) {
+        setPasswordError(
+          "Password must be at least 8 characters and contain a number!"
+        );
+        valid = false;
+      } else {
+        setPasswordError("");
+      }
+      if (!termsAccepted) {
+        setTermsAcceptedError("You must agree before submitting.");
+        valid = false;
+      } else {
+        setTermsAcceptedError("");
+      }
+
+      if (!valid) {
+        return;
+      }
+
+      const formData = {
+        fullname,
+        username,
+        email,
+        password,
+      };
+
+      try {
+        const userData = await register(formData);
+        navigate("/login");
+      } catch (error) {
+        console.log("Error response from server:", error.message);
+        let errorMessage = "An error occurred. Please try again later.";
+
+        if (error.message) {
+          errorMessage = error.message;
+        }
+
+        setServerError(errorMessage);
+      }
+    };
+
+
+
+
   return (
     <>
       <main>
