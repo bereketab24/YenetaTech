@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../../../Services/auth.services";
 import classes from "../../../assets/styles/user/user.module.css";
@@ -7,90 +7,78 @@ import logo1 from "../../../assets/images/logoYc.png";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedEmail = localStorage.getItem("email");
+    const storedPassword = localStorage.getItem("password");
+
+    if (storedEmail && storedPassword) {
+      setEmail(storedEmail);
+      setPassword(storedPassword);
+      setRememberMe(true);
+    }
+  }, []);
 
   //Error handling
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [termsAcceptedError, setTermsAcceptedError] = useState("");
   const [serverError, setServerError] = useState("");
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    let valid = true;
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      let valid = true;
+    if (!email) {
+      setEmailError("Please provide your Email!");
+      valid = false;
+    } else if (!email.includes("@")) {
+      setEmailError("Invalid email format!");
+      valid = false;
+    } else {
+      setEmailError("");
+    }
 
-      if (!fullname) {
-        setFullnamerequired("Please provide your Full Name!");
-        valid = false;
-      } else {
-        setFullnamerequired("");
-      }
+    if (!password) {
+      setPasswordError("Please enter your Password!");
+      valid = false;
+    } else if (serverError) {
+      setPasswordError(serverError);
+      valid = false;
+    } else {
+      setPasswordError("");
+    }
+    if (rememberMe) {
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", password);
+    } else {
+      localStorage.removeItem("email");
+      localStorage.removeItem("password");
+    }
+    if (!valid) {
+      return;
+    }
 
-      if (!username) {
-        setUsernamerequired("Please provide your Username!");
-        valid = false;
-      } else {
-        setUsernamerequired("");
-      }
-
-      if (!email) {
-        setEmailError("Please provide your Email!");
-        valid = false;
-      } else if (!email.includes("@")) {
-        setEmailError("Invalid email format!");
-        valid = false;
-      } else {
-        setEmailError("");
-      }
-
-      if (!password) {
-        setPasswordError("Please enter your Password!");
-        valid = false;
-      } else if (password.length < 8 || !/\d/.test(password)) {
-        setPasswordError(
-          "Password must be at least 8 characters and contain a number!"
-        );
-        valid = false;
-      } else {
-        setPasswordError("");
-      }
-      if (!termsAccepted) {
-        setTermsAcceptedError("You must agree before submitting.");
-        valid = false;
-      } else {
-        setTermsAcceptedError("");
-      }
-
-      if (!valid) {
-        return;
-      }
-
-      const formData = {
-        fullname,
-        username,
-        email,
-        password,
-      };
-
-      try {
-        const userData = await register(formData);
-        navigate("/login");
-      } catch (error) {
-        console.log("Error response from server:", error.message);
-        let errorMessage = "An error occurred. Please try again later.";
-
-        if (error.message) {
-          errorMessage = error.message;
-        }
-
-        setServerError(errorMessage);
-      }
+    const loginData = {
+      email,
+      password,
     };
 
+    try {
+      const userData = await login(loginData);
+      navigate("/");
+    } catch (error) {
+      console.log("Error response from server:", error.message);
+      let errorMessage = "An error occurred. Please try again later.";
 
+      if (error.message) {
+        errorMessage = error.message;
+      }
 
+      setServerError(errorMessage);
+    }
+  };
 
   return (
     <>
@@ -122,52 +110,63 @@ function Login() {
                           Enter your email & password to login
                         </p>
                       </div>
+                      {serverError && (
+                        <div className="alert alert-danger" role="alert">
+                          {serverError}
+                        </div>
+                      )}
 
-                      <form className="row g-3 needs-validation" novalidate>
+                      <form
+                        onSubmit={handleLogin}
+                        className="row g-3 needs-validation"
+                        noValidate
+                      >
                         <div className="col-12">
-                          <label for="yourEmail" className="form-label">
+                          <label htmlFor="yourEmail" className="form-label">
                             Email
                           </label>
                           <input
                             type="email"
-                            name="email"
-                            className="form-control"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className={`form-control ${
+                              emailError ? "is-invalid" : ""
+                            }`}
                             id="yourEmail"
-                            required
                           />
-                          <div className="invalid-feedback">
-                            Please enter a valid Email adddress!
-                          </div>
+                          <div className="invalid-feedback">{emailError}</div>
                         </div>
 
                         <div className="col-12">
-                          <label for="yourPassword" className="form-label">
+                          <label htmlFor="yourPassword" className="form-label">
                             Password
                           </label>
                           <input
                             type="password"
-                            name="password"
-                            className="form-control"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className={`form-control ${
+                              passwordError ? "is-invalid" : ""
+                            }`}
                             id="yourPassword"
-                            required
                           />
                           <div className="invalid-feedback">
-                            Please enter your password!
+                            {passwordError}
                           </div>
                         </div>
 
                         <div className="col-12">
                           <div className="form-check">
                             <input
-                              className="form-check-input"
+                              className={`form-check-input`}
                               type="checkbox"
                               name="remember"
-                              value="true"
                               id="rememberMe"
+                              onChange={(e) => setRememberMe(e.target.checked)}
                             />
                             <label
                               className="form-check-label"
-                              for="rememberMe"
+                              htmlFor="rememberMe"
                             >
                               Remember me
                             </label>
