@@ -67,7 +67,7 @@ function Login() {
 
     try {
       const userData = await login(loginData);
-      navigate("/");
+      navigate("/admin");
     } catch (error) {
       console.log("Error response from server:", error.message);
       let errorMessage = "An error occurred. Please try again later.";
@@ -133,6 +133,7 @@ function Login() {
                               emailError ? "is-invalid" : ""
                             }`}
                             id="yourEmail"
+                            autoComplete="email"
                           />
                           <div className="invalid-feedback">{emailError}</div>
                         </div>
@@ -149,6 +150,7 @@ function Login() {
                               passwordError ? "is-invalid" : ""
                             }`}
                             id="yourPassword"
+                            autoComplete="current-password"
                           />
                           <div className="invalid-feedback">
                             {passwordError}

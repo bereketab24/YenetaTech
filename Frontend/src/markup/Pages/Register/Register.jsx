@@ -90,19 +90,17 @@ function Register() {
       setServerError(errorMessage);
     }
 
-      
-  //     let errorMessage = "An error occurred. Please try again later.";
+    //     let errorMessage = "An error occurred. Please try again later.";
 
-  // if (error.response && error.response.data && error.response.data.message) {
-  //   errorMessage = error.response.data.message;
-  // } else if (error.response && error.response.data && error.response.data.error) {
-  //   errorMessage = error.response.data.error;
-  // } else if (error.response && error.response.data && error.response.data.message) {
-  //   errorMessage = error.response.data.message;
-  // }
+    // if (error.response && error.response.data && error.response.data.message) {
+    //   errorMessage = error.response.data.message;
+    // } else if (error.response && error.response.data && error.response.data.error) {
+    //   errorMessage = error.response.data.error;
+    // } else if (error.response && error.response.data && error.response.data.message) {
+    //   errorMessage = error.response.data.message;
+    // }
 
-  // setServerError(errorMessage);
-    
+    // setServerError(errorMessage);
   };
 
   return (
@@ -157,6 +155,7 @@ function Register() {
                             fullnamerequired ? "is-invalid" : ""
                           }`}
                           id="yourName"
+                          autoComplete="name"
                         />
                         <div className="invalid-feedback">
                           {fullnamerequired}
@@ -175,6 +174,7 @@ function Register() {
                             emailError ? "is-invalid" : ""
                           }`}
                           id="yourEmail"
+                          autoComplete="email"
                         />
                         <div className="invalid-feedback">{emailError}</div>
                       </div>
@@ -198,6 +198,7 @@ function Register() {
                               usernamerequired ? "is-invalid" : ""
                             }`}
                             id="yourUsername"
+                            autoComplete="username"
                           />
                           <div className="invalid-feedback">
                             {usernamerequired}
@@ -217,6 +218,7 @@ function Register() {
                             passwordError ? "is-invalid" : ""
                           }`}
                           id="yourPassword"
+                          autoComplete="new-password"
                         />
                         <div className="invalid-feedback">{passwordError}</div>
                       </div>
