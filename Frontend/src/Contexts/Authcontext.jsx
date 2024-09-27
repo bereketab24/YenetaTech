@@ -1,4 +1,4 @@
-// Import React and the Hooks we need here
+// Import React and the Hooks we need her
 import React, { useState, useEffect, useContext } from "react";
 // Create a context object
 const AuthContext = React.createContext();
