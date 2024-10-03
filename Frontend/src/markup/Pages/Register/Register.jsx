@@ -30,7 +30,7 @@ function Register() {
       setFullnamerequired("");
     }
 
-    if (!username) {
+    if (!username) {jj
       setUsernamerequired("Please provide your Username!");
       valid = false;
     } else {
