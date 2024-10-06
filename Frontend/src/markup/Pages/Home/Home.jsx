@@ -3,6 +3,7 @@ import banner1 from "../../../assets/images/hero-bg.jpg"
 import about1 from "../../../assets/images/about1.jpg";
 import course1 from "../../../assets/images/course-1.jpg";
 import { Link } from 'react-router-dom';
+import Courses from "../../components/Courses/Courses";
 
 function Home() {
   return (
@@ -81,7 +82,7 @@ function Home() {
             <p>Popular Courses</p>
           </div>
 
-          <div className="container">
+          {/* <div className="container">
             <div className="row">
               <div className="col-lg-4 col-md-6 d-flex align-items-center mb-3 mb-lg-0">
                 <div className="course-item shadow">
@@ -165,7 +166,8 @@ function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
+          <Courses/>
         </section>
       </main>
     </>

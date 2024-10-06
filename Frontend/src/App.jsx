@@ -4,7 +4,7 @@ import Login from "./markup/Pages/Login/Login.jsx";
 import Register from "./markup/Pages/Register/Register.jsx";
 import Header from "./markup/components/Header/Header.jsx";
 import Footer from "./markup/components/Footer/Footer.jsx";
-import Courses from "./markup/Pages/Courses/Courses.jsx";
+import Courses from "./markup/Pages/Coursesp/Coursesp.jsx";
 import About from "./markup/Pages/About/About.jsx";
 import Contact from "./markup/Pages/Contact/Contact.jsx";
 import CourseDetails from "./markup/Pages/CourseDetails/CourseDetails.jsx";
