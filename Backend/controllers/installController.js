@@ -40,6 +40,7 @@ exports.install = async (req, res) => {
                 course_fee INT,
                 schedule VARCHAR(255),
                 category VARCHAR(255),
+                course_image VARCHAR(255),
                 course_video_url VARCHAR(255),
                 course_notes_url VARCHAR(255),
                 course_assignment_url VARCHAR(255),

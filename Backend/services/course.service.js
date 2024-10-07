@@ -36,13 +36,15 @@ exports.addCourse = async (courseData) => {
       trainer,
       course_fee,
       schedule,
+      category,
+      course_image,
       course_video_url,
       course_notes_url,
       course_assignment_url,
     } = courseData;
     const sql = `
-        INSERT INTO courses (course_name, description, trainer, course_fee, schedule, course_video_url, course_notes_url, course_assignment_url)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO courses (course_name, description, trainer, course_fee, schedule,category,course_image, course_video_url, course_notes_url, course_assignment_url)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)
     `;
     const values = [
       course_name,
@@ -50,6 +52,8 @@ exports.addCourse = async (courseData) => {
       trainer,
       course_fee,
       schedule,
+      category,
+      course_image,
       course_video_url,
       course_notes_url,
       course_assignment_url,
