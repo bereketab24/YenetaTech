@@ -14,8 +14,7 @@ function AdminFooter() {
             . All Rights Reserved
           </div>
           <div className={`${adminstyle.credits}`}>
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-            <br />
+        
             Developed by <strong>Bereketab</strong>
           </div>
         </footer>

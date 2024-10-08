@@ -12,11 +12,11 @@ function Footer() {
                 <span className="sitename">Yeneta</span>
               </Link>
               <div className="footer-contact pt-3">
-                <p>Addis Ababa, Ethiopia</p>
+                <p>Warsaw, Poland</p>
                 <p className="mt-3">
                   <strong>Phone:</strong>{" "}
-                  <Link to="tel:+251955281000" target="_blank">
-                    +251-55-28-1000
+                  <Link to="tel:+48-452-852-733" target="_blank">
+                    +48 452 852 733
                   </Link>
                 </p>
                 <p>
@@ -111,10 +111,6 @@ function Footer() {
               Developed by <strong>Bereketab</strong>
             </span>
           </p>
-          <div className="credits">
-            Designed by{" "}
-            <Link to="https://bootstrapmade.com/">BootstrapMade</Link>
-          </div>
         </div>
       </footer>
     </>
