@@ -31,7 +31,7 @@ function App() {
           <Route path="/courses" element={<Courses />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/courses/:courseID" element={<CourseDetails />} />
+          <Route path="/courses/:courseId" element={<CourseDetails />} />
           <Route path="*" element={<Notfound/>}/>
         </Route>
         <Route element={<AdminLayout/>}>
