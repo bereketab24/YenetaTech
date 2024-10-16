@@ -1,0 +1,27 @@
+/* Header.css */
+.mobile-nav-toggle {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  background-color: #57abcd !important; /* Ensure it appears clickable */
+  border: none !important;
+  /* width: 50px !important;
+  height: 25px !important; */
+  padding: 13.5px 23px !important;
+  border-radius: 50px !important;
+}
+
+.navmenu .dropdown-menu {
+  background-color: white !important; /* Ensure dropdown has a white background */
+  border: 1px solid rgba(0, 0, 0, 0.15) !important; /* Add border for visibility */
+}
+
+.navmenu .dropdown-item {
+  color: #57abcd !important;
+  background-color: white !important; /* Text color */
+}
+
+.navmenu .dropdown-item:hover {
+  background-color: #f8f9fa !important; /* Background color on hover */
+}

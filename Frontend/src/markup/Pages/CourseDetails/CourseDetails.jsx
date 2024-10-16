@@ -36,8 +36,6 @@ import { fetchCourseDetails  } from "../../../Services/course.services";
                   <h1>{course.course_name}</h1>
                   <p className="mb-0">
                     {course.description}
-                    {/* Master the art of full-stack web development with our
-                    comprehensive MERN Stack online course! */}
                   </p>
                 </div>
               </div>

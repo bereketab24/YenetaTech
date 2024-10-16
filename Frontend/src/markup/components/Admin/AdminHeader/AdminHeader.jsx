@@ -1,10 +1,10 @@
 import React from "react";
-import adminstyle from "../../../../assets/styles/user/user.module.css"
-import adlogo from "../../../../assets/images/logoYc.png"
-import profile from "../../../../assets/images/profile.jpg"
+import adminstyle from "../../../../assets/styles/user/user.module.css";
+import adlogo from "../../../../assets/images/logoYc.png";
+import profile from "../../../../assets/images/profile.jpg";
 import { Link } from "react-router-dom";
 
-function AdminHeader() {
+function AdminHeader({ toggleSidebar }) {
   return (
     <>
       <header id="header" className={`${adminstyle.header} fixed-top d-flex align-items-center mb-5`}>
@@ -13,7 +13,10 @@ function AdminHeader() {
             <img src={adlogo} alt="" />
             <span className="d-none d-lg-block">Yeneta</span>
           </Link>
-          <i className={`bi bi-list ${adminstyle.togglesidebarbtn}`}></i>
+          <i 
+            className={`bi bi-list ${adminstyle.togglesidebarbtn}`} 
+            onClick={toggleSidebar} // Add onClick event
+          ></i>
         </div>
 
         <nav className={`${adminstyle.headernav} ms-auto`}>
@@ -23,14 +26,10 @@ function AdminHeader() {
                 className={`${adminstyle.navlink} ${adminstyle.navprofile} d-flex align-items-center pe-0 pt-2`}
                 href="#"
               >
-                <img
-                  src={profile}
-                  alt="Profile"
-                  className="rounded-circle"
-                />
+                <img src={profile} alt="Profile" className="rounded-circle" />
                 <span className="d-none d-md-block dropdown-toggle ps-2">
                   @Bereketab24
-                </span>{" "}
+                </span>
               </a>
 
               <ul className={`dropdown-menu dropdown-menu-end ${adminstyle.dropdownmenuarrow} ${adminstyle.profile}`}>
@@ -41,12 +40,8 @@ function AdminHeader() {
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
-
                 <li>
-                  <a
-                    className="dropdown-item d-flex align-items-center"
-                    href="users-profile.html"
-                  >
+                  <a className="dropdown-item d-flex align-items-center" href="users-profile.html">
                     <i className="bi bi-person"></i>
                     <span>My Profile</span>
                   </a>
@@ -54,12 +49,8 @@ function AdminHeader() {
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
-
                 <li>
-                  <a
-                    className="dropdown-item d-flex align-items-center"
-                    href="users-profile.html"
-                  >
+                  <a className="dropdown-item d-flex align-items-center" href="users-profile.html">
                     <i className="bi bi-gear"></i>
                     <span>Account Settings</span>
                   </a>
@@ -67,12 +58,8 @@ function AdminHeader() {
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
-
                 <li>
-                  <a
-                    className="dropdown-item d-flex align-items-center"
-                    href="pages-faq.html"
-                  >
+                  <a className="dropdown-item d-flex align-items-center" href="pages-faq.html">
                     <i className="bi bi-question-circle"></i>
                     <span>Need Help?</span>
                   </a>
@@ -80,7 +67,6 @@ function AdminHeader() {
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
-
                 <li>
                   <a className="dropdown-item d-flex align-items-center" href="#">
                     <i className="bi bi-box-arrow-right"></i>

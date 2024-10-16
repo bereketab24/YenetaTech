@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import { Link } from "react-router-dom";
 
 function Contact() {
@@ -42,7 +42,7 @@ function Contact() {
                 <i className="bi bi-geo-alt flex-shrink-0"></i>
                 <div>
                   <h3>Address</h3>
-                  <p>Kality, Addis Ababa, Ethiopia</p>
+                  <p>Wschodu Slonca, Warsaw, Poland</p>
                 </div>
               </div>
 
