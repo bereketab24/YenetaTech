@@ -19,12 +19,13 @@ const ProtectedRoutes = ({ reqiredRole }) => {
     };
     checkSession();
   }, []);
-  if(!isAuthenticated){
-    return <Navigate to="/login"/>
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
   }
-  if(isAuthenticated && userRole !== 1){
-    return 
+  if (reqiredRole && userRole !== reqiredRole) {
+    return <Navigate to="/unauthorized" />;
   }
+  return <Outlet />;
 };
 
 export default ProtectedRoutes;
