@@ -22,4 +22,11 @@ export const login = async (loginData) => {
   }
 };
 
-exports
+export const RouteProtection = async() => {
+  try {
+    const response = await axios.get(`${backend_api}/auth/checksession`, {withCredentials: true})
+    
+  } catch (error) {
+    
+  }
+}
