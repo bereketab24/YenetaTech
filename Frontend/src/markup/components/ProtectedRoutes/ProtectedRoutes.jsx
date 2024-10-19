@@ -13,10 +13,18 @@ const ProtectedRoutes = ({ reqiredRole }) => {
         const { isAuthenticated, userRole } = await RouteProtection();
         setIsAuthenticated(isAuthenticated);
         setUserRole(userRole);
-      } catch (error) {}
+      } catch (error) {
+        console.error("Error checking session:", error);
+      }
     };
+    checkSession();
   }, []);
-  return;
+  if(!isAuthenticated){
+    return <Navigate to="/login"/>
+  }
+  if(isAuthenticated && userRole !== 1){
+    return 
+  }
 };
 
 export default ProtectedRoutes;
