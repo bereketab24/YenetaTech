@@ -60,3 +60,20 @@ exports.logout = (req, res) => {
     res.status(200).json({ message: "Logout successful" });
   });
 };
+
+exports.checkSession = (req, res) => {
+  if(req.session && req.session.roleId){
+    return res.status(200).json({
+      isAuthenicated : true,
+      userId: req.session.userId,
+      roleId: req.session.roleId
+    })
+  }
+  else{
+    return res.status(200).json({
+      isAuthenicated: false,
+      message: "No Active Session"
+    })
+  }
+
+}
