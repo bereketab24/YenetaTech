@@ -25,8 +25,10 @@ export const login = async (loginData) => {
 export const RouteProtection = async() => {
   try {
     const response = await axios.get(`${backend_api}/auth/checksession`, {withCredentials: true})
+    return response.data
     
   } catch (error) {
+    throw new Error("Error during session cheking:", error.response.data.message)
     
   }
 }
