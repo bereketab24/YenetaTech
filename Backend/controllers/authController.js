@@ -62,18 +62,16 @@ exports.logout = (req, res) => {
 };
 
 exports.checkSession = (req, res) => {
-  if(req.session && req.session.roleId){
+  if (req.session && req.session.roleId) {
     return res.status(200).json({
-      isAuthenicated : true,
+      isAuthenticated: true,
       userId: req.session.userId,
-      roleId: req.session.roleId
-    })
-  }
-  else{
+      roleId: req.session.roleId,
+    });
+  } else {
     return res.status(200).json({
-      isAuthenicated: false,
-      message: "No Active Session"
-    })
+      isAuthenticated: false,
+      message: "No Active Session",
+    });
   }
-
-}
+};

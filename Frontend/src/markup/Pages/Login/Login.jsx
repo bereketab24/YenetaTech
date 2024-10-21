@@ -67,7 +67,12 @@ function Login() {
 
     try {
       const userData = await login(loginData);
-      navigate("/admin");
+      const roleid = userData.data.user.role_id
+      if (roleid === 1) {
+        navigate("/admin");
+      } else if (roleid === 2) {
+        navigate("/student-dashboard");
+      }
     } catch (error) {
       console.log("Error response from server:", error.message);
       let errorMessage = "An error occurred. Please try again later.";
@@ -202,4 +207,3 @@ function Login() {
 }
 
 export default Login;
-

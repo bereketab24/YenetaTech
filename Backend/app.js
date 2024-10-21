@@ -36,7 +36,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Enable Cross-Origin Resource Sharing (CORS)
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173', // Replace with your frontend's origin
+  credentials: true, // Allow credentials (cookies, authorization headers)
+}));
 
 // Secure the app by setting various HTTP headers
 app.use(helmet());
