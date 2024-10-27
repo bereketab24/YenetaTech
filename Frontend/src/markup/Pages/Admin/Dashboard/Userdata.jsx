@@ -10,7 +10,7 @@ const Userdata = () => {
     const GetAllUsers = async () => {
       try {
         const response = await getalluser();
-        console.log(response);
+        setUser(response)
       } catch (error) {
         throw new Error();
       }
