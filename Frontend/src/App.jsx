@@ -19,6 +19,7 @@ import Notfound from "./markup/Pages/Notfound/Notfound.jsx";
 import Students from "./markup/Pages/Admin/Students/Students.jsx";
 import Unauthorized from "./markup/Pages/Unauthorized/Unauthorized.jsx";
 import ProtectedRoutes from "./markup/components/ProtectedRoutes/ProtectedRoutes.jsx";
+import Userdata from "./markup/Pages/Admin/Dashboard/Userdata.jsx";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             {/* <Route index element={<Dashboard/>}/> */}
             <Route path="" element={<Dashboard />} />
             <Route path="/admin/students" element={<Students />} />
+            <Route path="/admin/users" element={<Userdata />} />
           </Route>
         </Route>
       </Routes>

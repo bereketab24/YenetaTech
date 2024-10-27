@@ -11,9 +11,9 @@ const ProtectedRoutes = ({ reqiredRole }) => {
     const checkSession = async () => {
       try {
         const { isAuthenticated, roleId } = await RouteProtection();
-        console.log(isAuthenticated)
+        // console.log(isAuthenticated)
         const mama = await RouteProtection();
-        console.log(mama)
+        // console.log(mama)
         setIsAuthenticated(isAuthenticated);
         setUserRole(roleId);
       } catch (error) {
