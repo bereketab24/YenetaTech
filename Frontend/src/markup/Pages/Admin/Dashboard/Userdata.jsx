@@ -1,53 +1,96 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Button } from "@mui/material";
-import { getalluser } from "../../../../Services/admin.services";
+import { Box, Button } from "@mui/material";
+import adminstyle from "../../../../assets/styles/user/user.module.css";
+import { getalluser , deleteuser } from "../../../../Services/admin.services";
 
 const Userdata = () => {
-  const [user, setUser] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const GetAllUsers = async () => {
       try {
         const response = await getalluser();
-        setUser(response.data)
+        setUsers(response.data);
       } catch (error) {
         throw new Error();
       }
     };
     GetAllUsers();
   }, []);
+  console.log(users);
+  const handleDeleteUser = async (userId) => {
+    try {
+        await deleteuser(userId)
+        alert("User deleted successfully")
+        setUsers(users.filter((user)=> user.user_id !== userId))
+        
+    } catch (error) {
+        alert("Failed to delete user");
+        
+    }
+  }
   const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
-    { field: 'name', headerName: 'Name', width: 150 },
-    { field: 'email', headerName: 'Email', width: 200 },
+    { field: "user_id", headerName: "User_ID", flex: 0.2 },
+    { field: "role_id", headerName: "Role_ID", flex: 0.2 },
+    { field: "fullname", headerName: "Name", flex: 1 },
+    { field: "username", headerName: "User Name", flex: 0.5 },
+    { field: "email", headerName: "Email", flex: 1 },
     {
-      field: 'actions',
-      headerName: 'Actions',
-      width: 150,
+      field: "actions",
+      headerName: "Action",
+      flex: 0.5,
       renderCell: (params) => (
         <>
-          <Button
-            variant="contained"
-            color="primary"
-            size="small"
-            onClick={() => handleEdit(params.row.id)}
-            style={{ marginRight: 16 }}
+          <Box
+            sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "100%" }}
           >
-            Edit
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            size="small"
-            onClick={() => handleDelete(params.row.id)}
-          >
-            Delete
-          </Button>
+            <Button
+              variant="contained"
+              color="error"
+              size="small"
+              onClick={() => handleDeleteUser(params.row.user_id)}
+            >
+              Delete
+            </Button>
+          </Box>
         </>
-      )
-    }
+      ),
+    },
   ];
+
+  return (
+    <div className={`${adminstyle.body} ${adminstyle.hpro}`}>
+      <body className={`${adminstyle.body} ${adminstyle.wrapping}`}>
+        <main id="main" className={`${adminstyle.main}`}>
+          <div className={`${adminstyle.pagetitle}`}>
+            <h1>Users</h1>
+            <nav>
+              <ol className={`breadcrumb`}>
+                <li className="breadcrumb-item">
+                  <a className={`${adminstyle.a}`} href="index.html">
+                    Home
+                  </a>
+                </li>
+                <li className={`breadcrumb-item active`}>Users</li>
+              </ol>
+            </nav>
+          </div>
+          <div style={{ height: 400, width: "100%" }}>
+            <DataGrid
+              rows={users}
+              columns={columns}
+              pageSize={5}
+              rowsPerPageOptions={[5, 10, 20]}
+              checkboxSelection
+              disableSelectionOnClick
+              getRowId={(row) => row.user_id}
+            />
+          </div>
+        </main>
+      </body>
+    </div>
+  );
 };
 
-export default Userdata
+export default Userdata;

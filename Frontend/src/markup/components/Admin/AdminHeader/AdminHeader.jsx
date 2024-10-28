@@ -3,24 +3,31 @@ import adminstyle from "../../../../assets/styles/user/user.module.css";
 import adlogo from "../../../../assets/images/logoYc.png";
 import profile from "../../../../assets/images/profile.jpg";
 import { Link } from "react-router-dom";
+import { colors } from "@mui/material";
 
 function AdminHeader({ toggleSidebar }) {
   return (
     <>
-      <header id="header" className={`${adminstyle.header} fixed-top d-flex align-items-center mb-5`}>
+      <header
+        id="header"
+        className={`${adminstyle.header} fixed-top d-flex align-items-center mb-5`}
+      >
         <div className="d-flex align-items-center justify-content-between">
-          <Link to="/" className={`${adminstyle.logo} d-flex align-items-center`}>
+          <Link
+            to="/"
+            className={`${adminstyle.logo} d-flex align-items-center`}
+          >
             <img src={adlogo} alt="" />
             <span className="d-none d-lg-block">Yeneta</span>
           </Link>
-          <i 
-            className={`bi bi-list ${adminstyle.togglesidebarbtn}`} 
+          <i
+            className={`bi bi-list ${adminstyle.togglesidebarbtn}`}
             onClick={toggleSidebar} // Add onClick event
           ></i>
         </div>
 
         <nav className={`${adminstyle.headernav} ms-auto`}>
-          <ul className="d-flex align-items-center">
+          {/* <ul className="d-flex align-items-center">
             <li className={`${adminstyle.navitem} dropdown pe-3`}>
               <a
                 className={`${adminstyle.navlink} ${adminstyle.navprofile} d-flex align-items-center pe-0 pt-2`}
@@ -75,7 +82,14 @@ function AdminHeader({ toggleSidebar }) {
                 </li>
               </ul>
             </li>
-          </ul>
+          </ul> */}
+          <button
+            type="button"
+            className="btn "
+            style={{ backgroundColor: "#57abcd", color: "white" }}
+          >
+            Log out
+          </button>
         </nav>
       </header>
     </>
