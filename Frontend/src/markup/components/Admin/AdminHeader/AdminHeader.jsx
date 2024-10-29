@@ -2,10 +2,23 @@ import React from "react";
 import adminstyle from "../../../../assets/styles/user/user.module.css";
 import adlogo from "../../../../assets/images/logoYc.png";
 import profile from "../../../../assets/images/profile.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../../../../Services/auth.services";
 import { colors } from "@mui/material";
 
 function AdminHeader({ toggleSidebar }) {
+  const navigate = useNavigate()
+  const logoutHandler = async () => {
+    try {
+     const response = await logout()
+     console.log(response)
+     if (response.status == 200){
+      navigate("/")
+     }
+    } catch (error) {
+      return error
+    }
+  }
   return (
     <>
       <header
@@ -87,6 +100,7 @@ function AdminHeader({ toggleSidebar }) {
             type="button"
             className="btn "
             style={{ backgroundColor: "#57abcd", color: "white" }}
+            onClick={() => logoutHandler()}
           >
             Log out
           </button>

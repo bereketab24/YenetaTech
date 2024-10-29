@@ -22,6 +22,16 @@ export const login = async (loginData) => {
   }
 };
 
+export const logout = async () => {
+  try {
+    const response = await axios.post(`${backend_api}/auth/logout`);
+    // console.log(response.status)
+    return response.status;
+  } catch (error) {
+    throw new Error(error.response.data.message || "Logout failed");
+  }
+};
+
 export const RouteProtection = async () => {
   try {
     const response = await axios.get(`${backend_api}/auth/check-session`, {

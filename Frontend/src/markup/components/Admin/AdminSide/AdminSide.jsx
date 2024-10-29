@@ -17,7 +17,7 @@ function AdminSide({ isSidebarOpen }) {
           <li className={`${adminstyle.navitem}`}>
             <NavLink className={`${adminstyle.navlink} ${adminstyle.collapsed}`} to="/admin/users">
               <i className="bi bi-people"></i>
-              <span>Students</span>
+              <span>Users</span>
             </NavLink>
           </li>
 

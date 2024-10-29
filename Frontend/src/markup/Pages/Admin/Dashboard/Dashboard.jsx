@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Dashboard() {
   return (
     <div className={`${adminstyle.body} ${adminstyle.hpro}`}>
-      <body className={`${adminstyle.body} ${adminstyle.wrapping}`}>
+      <div className={`${adminstyle.body} ${adminstyle.wrapping}`}>
         <main id="main" className={`${adminstyle.main}`}>
           <div className={`${adminstyle.pagetitle}`}>
             <h1>Dashboard</h1>
@@ -81,7 +81,7 @@ function Dashboard() {
             </div>
           </section>
         </main>
-      </body>
+      </div>
     </div>
   );
 }
