@@ -54,9 +54,11 @@ exports.login = async (req, res) => {
 exports.logout = (req, res) => {
   req.session.destroy((err) => {
     if (err) {
+      console.log("Error destroying session:", err);
       return res.status(500).json({ message: "Logout failed" });
     }
-    res.clearCookie("connect.sid");
+    res.clearCookie("connect.sid", {path : "/"});
+    console.log("Session destroyed and cookie cleared");
     res.status(200).json({ message: "Logout successful" });
   });
 };

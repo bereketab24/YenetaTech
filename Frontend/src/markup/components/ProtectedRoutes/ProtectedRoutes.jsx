@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "axios";
 import { RouteProtection } from "../../../Services/auth.services";
 
@@ -25,6 +26,7 @@ const ProtectedRoutes = ({ reqiredRole }) => {
   if (isAuthenticated === undefined) {
     return <div>Loading...</div>; // While the session check is in progress
   }
+ 
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
   }

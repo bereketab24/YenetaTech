@@ -24,7 +24,7 @@ export const login = async (loginData) => {
 
 export const logout = async () => {
   try {
-    const response = await axios.post(`${backend_api}/auth/logout`);
+    const response = await axios.post(`${backend_api}/auth/logout`,{}, {withCredentials: true});
     // console.log(response.status)
     return response.status;
   } catch (error) {
