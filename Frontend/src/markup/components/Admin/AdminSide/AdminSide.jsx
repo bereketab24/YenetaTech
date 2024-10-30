@@ -1,6 +1,6 @@
 import React from "react";
 import adminstyle from "../../../../assets/styles/user/user.module.css";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function AdminSide({ isSidebarOpen }) {
   return (
