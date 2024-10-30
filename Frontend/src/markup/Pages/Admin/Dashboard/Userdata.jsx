@@ -61,7 +61,7 @@ const Userdata = () => {
 
   return (
     <div className={`${adminstyle.body} ${adminstyle.hpro}`}>
-      <body className={`${adminstyle.body} ${adminstyle.wrapping}`}>
+      <div className={`${adminstyle.body} ${adminstyle.wrapping}`}>
         <main id="main" className={`${adminstyle.main}`}>
           <div className={`${adminstyle.pagetitle}`}>
             <h1>Users</h1>
@@ -88,7 +88,7 @@ const Userdata = () => {
             />
           </div>
         </main>
-      </body>
+      </div>
     </div>
   );
 };

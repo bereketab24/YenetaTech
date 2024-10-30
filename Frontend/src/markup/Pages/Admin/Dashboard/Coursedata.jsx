@@ -11,7 +11,7 @@ const Coursedata = () => {
     const GetAllCourses = async () => {
       try {
         const response = await fetchData();
-        console.log(response)
+        // console.log(response)
         setCourses(response);
       } catch (error) {
         throw new Error();
@@ -19,7 +19,7 @@ const Coursedata = () => {
     };
     GetAllCourses();
   }, []);
-  console.log(courses);
+//   console.log(courses);
   const handleDeleteCourse = async (courseId) => {
     try {
         await deletecourse(courseId)
@@ -71,7 +71,7 @@ const Coursedata = () => {
 
   return (
     <div className={`${adminstyle.body} ${adminstyle.hpro}`}>
-      <body className={`${adminstyle.body} ${adminstyle.wrapping}`}>
+      <div className={`${adminstyle.body} ${adminstyle.wrapping}`}>
         <main id="main" className={`${adminstyle.main}`}>
           <div className={`${adminstyle.pagetitle}`}>
             <h1>Courses</h1>
@@ -98,7 +98,7 @@ const Coursedata = () => {
             />
           </div>
         </main>
-      </body>
+      </div>
     </div>
   );
 };

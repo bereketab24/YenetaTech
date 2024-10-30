@@ -4,7 +4,7 @@ console.log(backend_api);
 export const fetchData = async () => {
   try {
     const response = await axios.get(`${backend_api}/courses`);
-    console.log(response.data);
+    // console.log(response.data);
     return response.data; // Contains user data and token/session info
    } 
   //catch (error) {
@@ -40,7 +40,7 @@ export const fetchCourseDetails = async (courseId) => {
 export const deletecourse = async (courseId) => {
   try {
     const response = await axios.delete(`${backend_api}/courses/${courseId}`, {withCredentials: true});
-    console.log(response)
+    // console.log(response)
     return response.data;
   } catch (error) {
     console.error('Error deleting user:', error);
