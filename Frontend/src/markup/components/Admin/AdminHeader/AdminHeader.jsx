@@ -27,7 +27,7 @@ function AdminHeader({ toggleSidebar }) {
       >
         <div className="d-flex align-items-center justify-content-between">
           <Link
-            to="/"
+            to="/admin"
             className={`${adminstyle.logo} d-flex align-items-center`}
           >
             <img src={adlogo} alt="" />

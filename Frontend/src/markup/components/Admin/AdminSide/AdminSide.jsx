@@ -28,13 +28,6 @@ function AdminSide({ isSidebarOpen }) {
               <i className="bi ms-auto"></i>
             </NavLink>
           </li>
-
-          <li className={`${adminstyle.navitem}`}>
-            <NavLink className={`${adminstyle.navlink} ${adminstyle.collapsed}`} to="/admin/progress">
-              <i className="bi bi-bar-chart"></i>
-              <span>Progress</span>
-            </NavLink>
-          </li>
         </ul>
       </aside>
     </>

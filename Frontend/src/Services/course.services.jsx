@@ -36,3 +36,14 @@ export const fetchCourseDetails = async (courseId) => {
     throw error;
   }
 };
+
+export const deletecourse = async (courseId) => {
+  try {
+    const response = await axios.delete(`${backend_api}/courses/${courseId}`, {withCredentials: true});
+    console.log(response)
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    throw error;
+  }
+};

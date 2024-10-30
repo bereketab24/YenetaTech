@@ -26,7 +26,9 @@ const ProtectedRoutes = ({ reqiredRole }) => {
   if (isAuthenticated === undefined) {
     return <div>Loading...</div>; // While the session check is in progress
   }
- 
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
   }
