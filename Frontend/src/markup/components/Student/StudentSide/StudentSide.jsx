@@ -2,7 +2,7 @@ import React from "react";
 import adminstyle from "../../../../assets/styles/user/user.module.css";
 import { NavLink } from "react-router-dom";
 
-function AdminSide({ isSidebarOpen }) {
+function StudentSide({ isSidebarOpen }) {
   return (
     <>
       <aside id="sidebar" className={`${adminstyle.sidebar} ${isSidebarOpen ? '' : adminstyle.sidebarHidden}`}>
@@ -15,7 +15,7 @@ function AdminSide({ isSidebarOpen }) {
           </li>
 
           <li className={`${adminstyle.navitem}`}>
-            <NavLink className={`${adminstyle.navlink}  ${adminstyle.collapsed}`} to="/admin/users">
+            <NavLink className={`${adminstyle.navlink} ${adminstyle.collapsed} `} to="/admin/users">
               <i className="bi bi-people"></i>
               <span>Users</span>
             </NavLink>
@@ -34,4 +34,4 @@ function AdminSide({ isSidebarOpen }) {
   );
 }
 
-export default AdminSide;
+export default StudentSide;
