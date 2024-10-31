@@ -111,18 +111,7 @@ function Students() {
                           </button>
                         </td>
                       </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>Raheem Lehner</td>
-                        <td>Dynamic Division Officer</td>
-                        <td>47</td>
-                        <td>2011-04-19</td>
-                        <td>
-                          <button type="button" className="btn btn-danger">
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
+
         
                     </tbody>
                   </table>
