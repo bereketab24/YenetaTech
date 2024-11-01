@@ -6,14 +6,11 @@ export const fetchData = async () => {
     const response = await axios.get(`${backend_api}/courses`);
     // console.log(response.data);
     return response.data; // Contains user data and token/session info
-   } 
-
-  catch (error) {
-    console.error('Error fetching courses:', error);
+  } catch (error) {
+    console.error("Error fetching courses:", error);
     throw error;
   }
 };
-
 
 // Fetch single course details
 export const fetchCourseDetails = async (courseId) => {
@@ -21,18 +18,36 @@ export const fetchCourseDetails = async (courseId) => {
     const response = await axios.get(`${backend_api}/courses/${courseId}`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching course details:', error);
+    console.error("Error fetching course details:", error);
     throw error;
   }
 };
 
 export const deletecourse = async (courseId) => {
   try {
-    const response = await axios.delete(`${backend_api}/courses/${courseId}`, {withCredentials: true});
+    const response = await axios.delete(`${backend_api}/courses/${courseId}`, {
+      withCredentials: true,
+    });
     // console.log(response)
     return response.data;
   } catch (error) {
-    console.error('Error deleting user:', error);
+    console.error("Error deleting user:", error);
+    throw error;
+  }
+};
+
+export const updatecourse = async (courseId, courseData) => {
+  try {
+    console.log(courseData)
+    const response = await axios.put(
+      `${backend_api}/courses/${courseId}`,
+      courseData,
+      { withCredentials: true }
+    );
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating the course");
     throw error;
   }
 };

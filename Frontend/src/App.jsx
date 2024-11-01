@@ -19,8 +19,8 @@ import Notfound from "./markup/Pages/Notfound/Notfound.jsx";
 import Students from "./markup/Pages/Admin/Students/Students.jsx";
 import Unauthorized from "./markup/Pages/Unauthorized/Unauthorized.jsx";
 import ProtectedRoutes from "./markup/components/ProtectedRoutes/ProtectedRoutes.jsx";
-import Userdata from "./markup/Pages/Admin/Dashboard/Userdata.jsx";
-import Coursedata from "./markup/Pages/Admin/Dashboard/Coursedata.jsx"
+import Userdata from "./markup/Pages/Admin/Userdata/Userdata.jsx";
+import Coursedata from "./markup/Pages/Admin/Coursedata/Coursedata.jsx"
 
 function App() {
   return (

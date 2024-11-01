@@ -66,32 +66,39 @@ exports.addCourse = async (courseData) => {
 };
 
 exports.updateCourse = async (id, courseData) => {
+  // console.log(courseData)
   try {
     const {
-      title,
+      course_name,
       description,
       trainer,
       course_fee,
       schedule,
-      videoUrl,
-      notesUrl,
-      assignmentUrl,
+      category,
+      course_image,
+      course_video_url,
+      course_notes_url,
+      course_assignment_url,
     } = courseData;
+    // console.log(course_name)
     const sql =
-      "UPDATE courses SET course_name = ?, description = ?, trainer = ?, course_fee = ?, schedule = ?, course_video_url = ?, course_notes_url = ?, course_assignment_url = ? WHERE course_id = ?";
+      "UPDATE courses SET course_name = ?, description = ?, trainer = ?, course_fee = ?, schedule = ?, category = ?, course_image = ?, course_video_url = ?, course_notes_url = ?, course_assignment_url = ? WHERE course_id = ?";
 
     const values = [
-      title,
+      course_name,
       description,
       trainer,
       course_fee,
       schedule,
-      videoUrl,
-      notesUrl,
-      assignmentUrl,
+      category,
+      course_image,
+      course_video_url,
+      course_notes_url,
+      course_assignment_url,
       id,
     ];
     const [results] = await db.query(sql, values);
+    console.log(results)
     return results.affectedRows > 0;
   } catch (error) {
     throw new Error(error.message);

@@ -71,10 +71,12 @@ exports.addCourse = async (req, res) => {
 
 exports.updateCourse = async (req, res) => {
   try {
+    console.log(req.params.id)
     const updatedCourse = await courseService.updateCourse(
       req.params.id,
       req.body
     );
+    // console.log(updatedCourse);
     if (!updatedCourse) {
       return res.status(404).json({ message: "Course not found" });
     }
