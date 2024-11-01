@@ -7,9 +7,7 @@ export const fetchData = async () => {
     // console.log(response.data);
     return response.data; // Contains user data and token/session info
    } 
-  //catch (error) {
-  //   throw new Error(error.response.data.message || "Registration failed");
-  // }
+
   catch (error) {
     console.error('Error fetching courses:', error);
     throw error;
