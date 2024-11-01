@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Modal, TextField } from "@mui/material";
 import adminstyle from "../../../../assets/styles/user/user.module.css";
 import { fetchData , deletecourse } from "../../../../Services/course.services";
 
 const Coursedata = () => {
   const [courses, setCourses] = useState([]);
+  const [selectedCourse, setSelectedCourse] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     const GetAllCourses = async () => {
@@ -31,29 +33,45 @@ const Coursedata = () => {
         
     }
   }
+  const handleUpdateClick = (course) => {
+    setSelectedCourse(course)
+    setIsModalOpen(true)
+  }
+  const handleModalClosed = () => {
+    setSelectedCourse(null)
+    setIsModalOpen(false)
+  }
+  const handleUpdateCourse = async () => {
+    try {
+        
+        
+    } catch (error) {
+        
+    }
+  }
   const columns = [
-    { field: "course_id", headerName: "Course_ID", flex: 0.2 },
-    { field: "course_name", headerName: "Course Name", flex: 1 },
-    { field: "description", headerName: "Description", flex: 1 },
-    { field: "trainer", headerName: "Trainer Name", flex: 0.5 },
-    { field: "course_fee", headerName: "Fee", flex: 0.4 },
-    { field: "schedule", headerName: "Schedule", flex: 0.5 },
-    { field: "category", headerName: "Category", flex: 0.5 },
-    { field: "course_image", headerName: "Course Image Link", flex: 0.5 },
-    { field: "course_video_url", headerName: "Course Video Link", flex: 0.5 },
-    { field: "course_notes_url", headerName: "Course Notes Link", flex: 0.5 },
-    { field: "course_assignment_url", headerName: "Course Assignment Link", flex: 0.5 },
-    { field: "created_at", headerName: "Date of Uploaded", flex: 0.5 },
-    { field: "updated_at", headerName: "Date of Updated", flex: 0.5 },
+    { field: "course_id", headerName: "ID", width: 50 },
+    { field: "course_name", headerName: "Name", width: 350 },
+    { field: "description", headerName: "Description", width: 350 },
+    { field: "trainer", headerName: "Trainer Name", width: 350 },
+    { field: "course_fee", headerName: "Fee", width: 350 },
+    { field: "schedule", headerName: "Schedule", width: 350 },
+    { field: "category", headerName: "Category", width: 350 },
+    { field: "course_image", headerName: "Course Image Link", width: 350 },
+    { field: "course_video_url", headerName: "Course Video Link", width: 350 },
+    { field: "course_notes_url", headerName: "Course Notes Link", width: 350 },
+    { field: "course_assignment_url", headerName: "Course Assignment Link", width: 350 },
+    { field: "created_at", headerName: "Date of Uploaded", width: 350 },
+    { field: "updated_at", headerName: "Date of Updated", width: 350 },
 
     {
       field: "actions",
       headerName: "Action",
-      flex: 0.5,
+      width: 100,
       renderCell: (params) => (
         <>
           <Box
-            sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "100%" }}
+            sx={{ display: "width", justifyContent: "center", alignItems: "center", width: "100%", height: "100%" }}
           >
             <Button
               variant="contained"
