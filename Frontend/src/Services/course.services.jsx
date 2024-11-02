@@ -38,7 +38,7 @@ export const deletecourse = async (courseId) => {
 
 export const updatecourse = async (courseId, courseData) => {
   try {
-    console.log(courseData)
+    // console.log(courseData)
     const response = await axios.put(
       `${backend_api}/courses/${courseId}`,
       courseData,
@@ -48,6 +48,18 @@ export const updatecourse = async (courseId, courseData) => {
     return response.data;
   } catch (error) {
     console.error("Error updating the course");
+    throw error;
+  }
+};
+
+export const addCourse = async (newCourseData) => {
+  try {
+    const response = axios.post(`${backend_api}/courses`, newCourseData, {
+      withCredentials: true,
+    });
+    return response;
+  } catch (error) {
+    console.error("Error adding the course");
     throw error;
   }
 };

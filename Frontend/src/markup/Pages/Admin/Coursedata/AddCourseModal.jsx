@@ -35,10 +35,22 @@ const AddCourseModal = ({ isOpen, onClose, onAdd }) => {
       course_assignment_url: "",
     });
   };
+  const modalStyle = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "80%",
+    maxHeight: "80vh", // Set max height to allow scrolling within modal
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    p: 4,
+    overflowY: "auto", // Enable vertical scrolling
+  };
 
   return (
     <Modal open={isOpen} onClose={onClose}>
-      <Box sx={{ p: 4, maxWidth: 500, margin: "auto", mt: 5, bgcolor: "background.paper", borderRadius: 2 }}>
+      <Box sx={modalStyle}>
         <Typography variant="h6">Add New Course</Typography>
         <TextField label="Course Name" name="course_name" fullWidth margin="normal" onChange={handleChange} />
         <TextField label="Description" name="description" fullWidth margin="normal" onChange={handleChange} />

@@ -31,15 +31,15 @@ const Userdata = () => {
     }
   }
   const columns = [
-    { field: "user_id", headerName: "User_ID", flex: 0.2 },
-    { field: "role_id", headerName: "Role_ID", flex: 0.2 },
-    { field: "fullname", headerName: "Name", flex: 1 },
-    { field: "username", headerName: "User Name", flex: 0.5 },
-    { field: "email", headerName: "Email", flex: 1 },
+    { field: "user_id", headerName: "User_ID", width: 150 },
+    { field: "role_id", headerName: "Role_ID", width: 150 },
+    { field: "fullname", headerName: "Name", width: 350 },
+    { field: "username", headerName: "User Name", width: 350 },
+    { field: "email", headerName: "Email", width: 350 },
     {
       field: "actions",
       headerName: "Action",
-      flex: 0.5,
+      width: 150,
       renderCell: (params) => (
         <>
           <Box

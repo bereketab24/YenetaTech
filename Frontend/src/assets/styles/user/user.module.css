@@ -623,7 +623,7 @@ h6 {
 
 @media (max-width: 1199px) {
   .sidebar {
-    left: -300px;
+    left: 0px;
   }
 }
 
@@ -656,9 +656,9 @@ h6 {
     margin-left: 0;
   }
 
-  .toggle-sidebar .sidebar {
-    left: -300px;
-  }
+  /* .toggle-sidebar .sidebar {
+    left: 300px;
+  } */
 }
 
 .sidebarnav {

@@ -6,8 +6,10 @@ import adminstyle from "../../../../assets/styles/user/user.module.css";
 import {
   fetchData,
   deletecourse,
-  updatecourse, addCourse
+  updatecourse,
+  addCourse,
 } from "../../../../Services/course.services";
+import AddCourseModal from "./AddCourseModal";
 
 const Coursedata = () => {
   const [courses, setCourses] = useState([]);
@@ -156,6 +158,7 @@ const Coursedata = () => {
           </div>
           <div style={{ height: 400, width: "100%" }}>
             <Button
+              style={{marginBottom: 5}}
               variant="contained"
               color="primary"
               onClick={() => setIsAddModalOpen(true)}
@@ -307,6 +310,9 @@ const Coursedata = () => {
               </Button>
             </Box>
           </Modal>
+          <AddCourseModal             isOpen={isAddModalOpen}
+            onClose={() => setIsAddModalOpen(false)}
+            onAdd={handleAddCourse}/>
         </main>
       </div>
     </div>

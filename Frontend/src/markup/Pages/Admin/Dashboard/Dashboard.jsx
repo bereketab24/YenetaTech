@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import adminstyle from "../../../../assets/styles/user/user.module.css";
-import { Link } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
+import { getalluser } from "../../../../Services/admin.services";
+import { fetchData } from "../../../../Services/course.services";
 
-function Dashboard() {
+const Dashboard = () => {
+  const [userCount, setUserCount] = useState(0);
+  const [courseCount, setCourseCount] = useState(0);
+
+  useEffect(() => {
+    const getCounts = async () => {
+      try {
+        const response = await getalluser();
+        const users = response.data
+        const courses = await fetchData();
+        console.log(users);
+        console.log(courses);
+
+        setUserCount(users.length); // Assuming users is an array
+        setCourseCount(courses.length); // Assuming courses is an array
+      } catch (error) {
+        console.error("Failed to fetch counts", error);
+      }
+    };
+
+    getCounts();
+  }, []);
+
   return (
     <div className={`${adminstyle.body} ${adminstyle.hpro}`}>
       <div className={`${adminstyle.body} ${adminstyle.wrapping}`}>
@@ -12,7 +36,9 @@ function Dashboard() {
             <nav>
               <ol className={`breadcrumb`}>
                 <li className="breadcrumb-item">
-                  <a className={`${adminstyle.a}`} href="index.html">Home</a>
+                  <a className={`${adminstyle.a}`} href="index.html">
+                    Home
+                  </a>
                 </li>
                 <li className={`breadcrumb-item active`}>Dashboard</li>
               </ol>
@@ -28,7 +54,7 @@ function Dashboard() {
                       className={`${adminstyle.card} ${adminstyle.infocard} ${adminstyle.customerscard} ${adminstyle.white} rounded shadow-sm`}
                     >
                       <div className={`${adminstyle.cardbody}`}>
-                        <h5 className={`${adminstyle.cardtitle}`}>Students</h5>
+                        <h5 className={`${adminstyle.cardtitle}`}>Total Number of Users</h5>
 
                         <div className="d-flex align-items-center">
                           <div
@@ -37,13 +63,7 @@ function Dashboard() {
                             <i className="bi bi-people"></i>
                           </div>
                           <div className="ps-3">
-                            <h6>1244</h6>
-                            <span className="text-danger small pt-1 fw-bold">
-                              12%
-                            </span>
-                            <span className="text-muted small pt-2 ps-1">
-                              decrease
-                            </span>
+                            <h6>{userCount}</h6>
                           </div>
                         </div>
                       </div>
@@ -55,22 +75,16 @@ function Dashboard() {
                       className={`${adminstyle.card} ${adminstyle.infocard} ${adminstyle.customerscard} ${adminstyle.white} shadow-sm`}
                     >
                       <div className={`${adminstyle.cardbody}`}>
-                        <h5 className={`${adminstyle.cardtitle}`}>Courses</h5>
+                        <h5 className={`${adminstyle.cardtitle}`}>Total Number of Courses</h5>
 
                         <div className="d-flex align-items-center">
                           <div
                             className={`${adminstyle.cardicon} rounded-circle d-flex align-items-center justify-content-center`}
                           >
-                            <i className="bi bi-people"></i>
+                            <i className="bi bi-book"></i>
                           </div>
                           <div className="ps-3">
-                            <h6>1244</h6>
-                            <span className="text-danger small pt-1 fw-bold">
-                              12%
-                            </span>
-                            <span className="text-muted small pt-2 ps-1">
-                              decrease
-                            </span>
+                            <h6>{courseCount}</h6>
                           </div>
                         </div>
                       </div>
@@ -84,6 +98,6 @@ function Dashboard() {
       </div>
     </div>
   );
-}
+};
 
 export default Dashboard;

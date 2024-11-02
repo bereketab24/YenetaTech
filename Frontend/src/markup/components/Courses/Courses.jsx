@@ -24,7 +24,7 @@ function Courses() {
       <div className="row">
         {courses.map((course) => (
           <div
-            className="col-lg-4 col-md-6 align-items-center mb-3 mb-lg-0"
+            className="col-lg-4 col-md-6 align-items-center mb-5 mb-lg-3"
             key={course.course_id}
           >
             <div className="course-item shadow">
