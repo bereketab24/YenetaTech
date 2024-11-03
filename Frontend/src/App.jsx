@@ -21,6 +21,9 @@ import Unauthorized from "./markup/Pages/Unauthorized/Unauthorized.jsx";
 import ProtectedRoutes from "./markup/components/ProtectedRoutes/ProtectedRoutes.jsx";
 import Userdata from "./markup/Pages/Admin/Userdata/Userdata.jsx";
 import Coursedata from "./markup/Pages/Admin/Coursedata/Coursedata.jsx"
+import StudentLayout from "./markup/components/StudentLayout/StudentLayout.jsx";
+import Mycourses from "./markup/Pages/Student/Mycourses/Mycourses.jsx";
+import Study from "./markup/Pages/Student/Study/Study.jsx";
 
 function App() {
   return (
@@ -44,6 +47,15 @@ function App() {
             {/* <Route path="/admin/students" element={<Students />} /> */}
             <Route path="/admin/users" element={<Userdata />} />
             <Route path="/admin/courses" element={<Coursedata/>} />
+          </Route>
+        </Route>
+        <Route path="/student" element={<ProtectedRoutes reqiredRole= {2} />}>
+          <Route element={<StudentLayout />}>
+            {/* <Route index element={<Dashboard/>}/> */}
+            
+            {/* <Route path="/admin/students" element={<Students />} /> */}
+            <Route path="" element={<Mycourses />} />
+            <Route path="/student/:courseId" element={<Study/>} />
           </Route>
         </Route>
       </Routes>

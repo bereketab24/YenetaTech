@@ -71,7 +71,7 @@ function Login() {
       if (roleid === 1) {
         navigate("/admin");
       } else if (roleid === 2) {
-        navigate("/student-dashboard");
+        navigate("/student");
       }
     } catch (error) {
       console.log("Error response from server:", error.message);
