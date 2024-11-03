@@ -3,7 +3,7 @@ import course1 from "../../../assets/images/course-1.jpg";
 import { Link } from "react-router-dom";
 import { fetchData } from "../../../Services/course.services";
 
-function Courses() {
+function Mycourses() {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
