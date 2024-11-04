@@ -21,7 +21,7 @@ function Courselist() {
   return (
     <main id="main" className={`${adminstyle.main}`}>
       <div className={`${adminstyle.pagetitle}`}>
-        <h1>Dashboard</h1>
+        <h1>Courses</h1>
         <nav>
           <ol className={`breadcrumb`}>
             <li className="breadcrumb-item">
