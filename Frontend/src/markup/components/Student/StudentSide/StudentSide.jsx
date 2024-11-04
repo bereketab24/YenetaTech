@@ -8,7 +8,7 @@ function StudentSide({ isSidebarOpen }) {
       <aside id="sidebar" className={`${adminstyle.sidebar} ${isSidebarOpen ? '' : adminstyle.sidebarHidden}`}>
         <ul className={`${adminstyle.sidebarnav}`} id="sidebarnav">
           <li className={`${adminstyle.navitem}`}>
-            <NavLink className={`${adminstyle.navlink} ${adminstyle.collapsed}`} to="/admin">
+            <NavLink className={`${adminstyle.navlink} ${adminstyle.collapsed}`} to="/student">
               <i className="bi bi-grid"></i>
               <span>Courses</span>
             </NavLink>
@@ -17,7 +17,7 @@ function StudentSide({ isSidebarOpen }) {
           
           {/* ${adminstyle.collapsed} */}
           <li className={`${adminstyle.navitem}`}>
-            <NavLink className={`${adminstyle.navlink} ${adminstyle.collapsed}`} to="/admin/courses">
+            <NavLink className={`${adminstyle.navlink} ${adminstyle.collapsed}`} to="/student/mycourses">
               <i className="bi bi-book-half"></i>
               <span>My Courses</span>
               <i className="bi ms-auto"></i>
