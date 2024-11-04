@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { fetchData } from "../../../../Services/course.services";
+import { enroll } from "../../../../Services/enrollment.services";
 import adminstyle from "../../../../assets/styles/user/user.module.css";
 
 function Courselist() {
@@ -18,20 +18,21 @@ function Courselist() {
 
     fetchDataFromService();
   }, []);
+
+  const handleenroll = async (courseId) => {
+    try {
+      const response = await enroll(courseId);
+
+      alert("enrolled successfully");
+    } catch (error) {
+      alert("Failed to delete user");
+    }
+  };
+
   return (
     <main id="main" className={`${adminstyle.main}`}>
       <div className={`${adminstyle.pagetitle}`}>
         <h1>Courses</h1>
-        <nav>
-          <ol className={`breadcrumb`}>
-            <li className="breadcrumb-item">
-              <a className={`${adminstyle.a}`} href="index.html">
-                Student
-              </a>
-            </li>
-            <li className={`breadcrumb-item active`}>Courses</li>
-          </ol>
-        </nav>
       </div>
       <section id="courses" className="courses section">
         <div className="container">

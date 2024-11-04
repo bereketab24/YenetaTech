@@ -37,7 +37,7 @@ exports.install = async (req, res) => {
                 course_name VARCHAR(255) NOT NULL UNIQUE,
                 description TEXT,
                 trainer VARCHAR(255),
-                course_fee INT,
+                course_fee VARCHAR(255),
                 schedule VARCHAR(255),
                 category VARCHAR(255),
                 course_image VARCHAR(255),

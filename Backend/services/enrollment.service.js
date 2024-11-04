@@ -44,12 +44,4 @@ exports.getEnrollments = async (userId) => {
   }
 }
 
-// exports.getEnrollments = (userId) => {
-//   const sql = "SELECT * FROM enrollments WHERE user_id = ?";
-//   return new Promise((resolve, reject) => {
-//     db.query(sql, [userId], (err, results) => {
-//       if (err) return reject(err);
-//       resolve(results);
-//     });
-//   });
-// };
+

@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { fetchData } from "../../../../Services/course.services";
+import { enrolled } from "../../../../Services/enrollment.services";
 import adminstyle from "../../../../assets/styles/user/user.module.css";
 
 function Courselist() {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    const fetchDataFromService = async () => {
+    const enrolledcourse = async () => {
       try {
-        const fetchedData = await fetchData();
+        const fetchedData = await enrolled();
         setCourses(fetchedData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
-    fetchDataFromService();
+    enrolledcourse();
   }, []);
   return (
     <main id="main" className={`${adminstyle.main}`}>
@@ -54,20 +54,12 @@ function Courselist() {
                           <p className="category">{course.category}</p>
                         </div>
                         <h3>
-                          <Link to={`/courses/${course.course_id}`}>
                             {course.course_name}
-                          </Link>
                         </h3>
-                        <p className="description">
-                          {course.description}
-                          {"  "}
-                          <strong>No Prior Knowledge Required!</strong>
-                        </p>
                         <div className="pricing">
-                          {course.course_fee}
                           <div className="btn-wrap">
                             <Link to="/enroll" className="btn-buy">
-                              Enroll
+                              Get in
                             </Link>
                           </div>
                         </div>
