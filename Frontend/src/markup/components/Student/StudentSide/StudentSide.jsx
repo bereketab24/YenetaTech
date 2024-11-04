@@ -10,21 +10,16 @@ function StudentSide({ isSidebarOpen }) {
           <li className={`${adminstyle.navitem}`}>
             <NavLink className={`${adminstyle.navlink} ${adminstyle.collapsed}`} to="/admin">
               <i className="bi bi-grid"></i>
-              <span>Dashboard</span>
+              <span>Courses</span>
             </NavLink>
           </li>
 
-          <li className={`${adminstyle.navitem}`}>
-            <NavLink className={`${adminstyle.navlink} ${adminstyle.collapsed} `} to="/admin/users">
-              <i className="bi bi-people"></i>
-              <span>Users</span>
-            </NavLink>
-          </li>
+          
           {/* ${adminstyle.collapsed} */}
           <li className={`${adminstyle.navitem}`}>
             <NavLink className={`${adminstyle.navlink} ${adminstyle.collapsed}`} to="/admin/courses">
               <i className="bi bi-book-half"></i>
-              <span>Courses</span>
+              <span>My Courses</span>
               <i className="bi ms-auto"></i>
             </NavLink>
           </li>

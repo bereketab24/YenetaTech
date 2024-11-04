@@ -32,10 +32,10 @@ function StudentHeader({ toggleSidebar }) {
             <img src={adlogo} alt="" />
             <span className="d-none d-lg-block">Yeneta</span>
           </Link>
-          {/* <i
+          <i
             className={`bi bi-list ${adminstyle.togglesidebarbtn}`}
             onClick={toggleSidebar} // Add onClick event
-          ></i> */}
+          ></i>
         </div>
 
         <nav className={`${adminstyle.headernav} ms-auto`}>

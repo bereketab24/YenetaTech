@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import course1 from "../../../assets/images/course-1.jpg";
+
 import { Link } from "react-router-dom";
-import { fetchData } from "../../../Services/course.services";
+import { enrolled } from "../../../../Services/enrollment.services";
 
 function Mycourses() {
   const [courses, setCourses] = useState([]);
@@ -9,8 +9,8 @@ function Mycourses() {
   useEffect(() => {
     const fetchDataFromService = async () => {
       try {
-        const fetchedData = await fetchData();
-        setCourses(fetchedData);
+        const enrolledcourses = await enrolled();
+        setCourses(enrolledcourses);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -42,19 +42,6 @@ function Mycourses() {
                     {course.course_name}
                   </Link>
                 </h3>
-                <p className="description">
-                  {course.description}
-                  {"  "}
-                  <strong>No Prior Knowledge Required!</strong>
-                </p>
-                <div className="pricing">
-                  {course.course_fee}
-                  <div className="btn-wrap">
-                    <Link to="/enroll" className="btn-buy">
-                      Enroll
-                    </Link>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

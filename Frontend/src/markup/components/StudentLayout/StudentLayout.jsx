@@ -17,9 +17,9 @@ function StudentLayout() {
   };
   return (
     <>
-    {/* toggleSidebar={toggleSidebar} */}
-      <StudentHeader />
-      {/* <StudentSide isSidebarOpen={isSidebarOpen}/> */}
+    
+      <StudentHeader toggleSidebar={toggleSidebar} />
+      <StudentSide isSidebarOpen={isSidebarOpen}/>
       <main style={{ marginLeft: isSidebarOpen ? '250px' : '0' }}>
         <Outlet /> {/* Renders the matched child route */}
       </main>
