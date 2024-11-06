@@ -2,6 +2,7 @@ const enrollmentService = require("../services/enrollment.service");
 
 exports.enroll = async (req, res) => {
   try {
+    console.log(req.body)
     const result = await enrollmentService.enroll(
       req.session.userId,
       req.params.courseId

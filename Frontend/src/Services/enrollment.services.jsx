@@ -3,10 +3,13 @@ const backend_api = import.meta.env.VITE_BACKEND_API_URL;
 console.log(backend_api);
 export const enroll = async (courseId) => {
   try {
-    const response = await axios.post(`${backend_api}/enrollments/enroll/${courseId}`, {
+    console.log(courseId)
+    console.log(courseId)
+    console.log(courseId)
+    const response = await axios.post(`${backend_api}/enrollments/enroll/${courseId}`,{}, {
         withCredentials: true,
       });
-    // console.log(response.data);
+    console.log(response.data);
     return response.data; // Contains user data and token/session info
   } catch (error) {
     console.error("Error fetching courses:", error);

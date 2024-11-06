@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { enroll } from "../../../../Services/enrollment.services";
+import { fetchData } from "../../../../Services/course.services";
 import adminstyle from "../../../../assets/styles/user/user.module.css";
 
 function Courselist() {
   const [courses, setCourses] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDataFromService = async () => {
@@ -23,9 +25,12 @@ function Courselist() {
     try {
       const response = await enroll(courseId);
 
-      alert("enrolled successfully");
+      if (response) {
+        alert("enrolled successfully");
+        navigate("/student");
+      }
     } catch (error) {
-      alert("Failed to delete user");
+      alert("Failed to enroll");
     }
   };
 
@@ -67,9 +72,9 @@ function Courselist() {
                         <div className="pricing">
                           {course.course_fee}
                           <div className="btn-wrap">
-                            <Link to="/enroll" className="btn-buy">
+                            <button onClick={() => handleenroll(course.course_id)} style={{border : 0}} className="btn-buy">
                               Enroll
-                            </Link>
+                            </button>
                           </div>
                         </div>
                       </div>
