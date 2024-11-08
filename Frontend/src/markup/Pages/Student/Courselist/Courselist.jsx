@@ -37,7 +37,7 @@ function Courselist() {
         [courseId] : error.message
       }));
 
-      console.log(serverError)
+      // console.log(serverError)
     }
   };
 

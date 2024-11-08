@@ -34,7 +34,7 @@ exports.unenroll = async (userId, courseId) => {
 exports.getEnrollments = async (userId) => {
   try {
     const sql = `
-      SELECT courses.course_id, courses.course_name, courses.description, courses.course_fee, courses.course_image
+      SELECT courses.course_id, courses.course_name, courses.course_image, courses.category
       FROM enrollments
       JOIN courses ON enrollments.course_id = courses.course_id
       WHERE enrollments.user_id = ?
