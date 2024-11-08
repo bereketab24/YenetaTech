@@ -33,7 +33,12 @@ exports.unenroll = async (userId, courseId) => {
 
 exports.getEnrollments = async (userId) => {
   try {
-    const sql = "SELECT * FROM enrollments WHERE user_id = ?";
+    const sql = `
+      SELECT courses.course_id, courses.course_name, courses.description, courses.course_fee, courses.course_image
+      FROM enrollments
+      JOIN courses ON enrollments.course_id = courses.course_id
+      WHERE enrollments.user_id = ?
+    `;
     const [result] = await db.query(sql, [userId]);
     return result;
   } catch (error) {
