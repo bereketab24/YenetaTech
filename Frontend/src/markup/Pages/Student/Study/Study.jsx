@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { getCoursesbyCourseId } from "../../../../Services/course.services";
+import adminstyle from "../../../../assets/styles/user/user.module.css"
 
 function Study() {
   const { courseId } = useParams();
@@ -10,10 +11,15 @@ function Study() {
     const study = async () => {
       try {
         const response = await getCoursesbyCourseId(courseId);
+        console.log(response)
+        setCourse(response)
+
+        console.log(course)
       } catch (error) {
         
       }
-    } 
+    }
+    study(), [] 
   });
   return (
     <main id="main" className={`${adminstyle.main}`}>
