@@ -2,15 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { enrolled } from "../../../../Services/enrollment.services";
 import adminstyle from "../../../../assets/styles/user/user.module.css";
+import { fetchData } from "../../../../Services/course.services";
 
 function Courselist() {
   const [courses, setCourses] = useState([]);
+  const [courseData, setCourseData] = useState([])
 
   useEffect(() => {
     const enrolledcourse = async () => {
       try {
         const fetchedData = await enrolled();
+        // console.log(fetchedData)
         setCourses(fetchedData);
+        const coursedata = await fetchData()
+        console.log(coursedata)
+        setCourseData(coursedata)
       } catch (error) {
         console.error("Error fetching data:", error);
       }

@@ -12,8 +12,11 @@ export const enroll = async (courseId) => {
     console.log(response.data);
     return response.data; // Contains user data and token/session info
   } catch (error) {
-    console.error("Error fetching courses:", error);
-    throw error;
+    throw new Error(error.response.data.message || "Enrollment failed");
+    // console.error("Error enrolling:", error);
+    console.log(error)
+
+    // throw error;
   }
 };
 
@@ -25,7 +28,7 @@ export const unenroll = async (courseId) => {
       });
     return response.data;
   } catch (error) {
-    console.error("Error fetching course details:", error);
+    console.error("Error unenrolling:", error);
     throw error;
   }
 };
@@ -38,7 +41,7 @@ export const enrolled = async () => {
     // console.log(response)
     return response.data;
   } catch (error) {
-    console.error("Error deleting user:", error);
+    console.error("Error fetching courses:", error);
     throw error;
   }
 };
