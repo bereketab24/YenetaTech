@@ -23,6 +23,16 @@ export const fetchCourseDetails = async (courseId) => {
   }
 };
 
+export const getCoursesbyCourseId = async (courseId) => {
+  try {
+    const response = await axios.get(`${backend_api}/courses/${courseId}`, {withCredentials:true});
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching course details:", error);
+    throw error;
+  }
+};
+
 export const deletecourse = async (courseId) => {
   try {
     const response = await axios.delete(`${backend_api}/courses/${courseId}`, {

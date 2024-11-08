@@ -6,7 +6,7 @@ import adminstyle from "../../../../assets/styles/user/user.module.css";
 
 function Courselist() {
   const [courses, setCourses] = useState([]);
-  const [serverError, setServerError] = useState("");
+  const [serverError, setServerError] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,7 +33,11 @@ function Courselist() {
     } catch (error) {
       // alert("Failed to enroll");
       // console.log(error.message)
-      setServerError(error.message);
+      setServerError(() => ({
+        [courseId] : error.message
+      }));
+
+      console.log(serverError)
     }
   };
 
@@ -82,11 +86,11 @@ function Courselist() {
                             >
                               Enroll
                             </button>
-                            {/* {serverError && (
+                            {serverError[course.course_id] && (
                               <div className="alert alert-danger mt-2" role="alert" >
-                                {serverError}
+                                {serverError[course.course_id]}
                               </div>
-                            )} */}
+                            )}
                           </div>
                         </div>
                       </div>
