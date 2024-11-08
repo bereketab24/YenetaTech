@@ -80,14 +80,13 @@ function Register() {
       const userData = await register(formData);
       navigate("/login");
     } catch (error) {
-      console.log("Error response from server:", error.message);
-      let errorMessage = "An error occurred. Please try again later.";
+      // console.log("Error response from server:", error.message);
+      // let errorMessage = "An error occurred. Please try again later.";
 
       if (error.message) {
-        errorMessage = error.message;
+        const errorMessage = error.message;
+        setServerError(errorMessage);
       }
-
-      setServerError(errorMessage);
     }
 
     //     let errorMessage = "An error occurred. Please try again later.";
