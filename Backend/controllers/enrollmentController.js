@@ -1,8 +1,18 @@
 const enrollmentService = require("../services/enrollment.service");
+const databasemodel = require("../models/dbModels");
 
 exports.enroll = async (req, res) => {
+  const enrollmentChecker = await databasemodel.findCoursesByid(
+    req.session.userId,
+    req.params.courseId
+  );
+  console.log(enrollmentChecker);
+  if (enrollmentChecker) {
+    return res.status(400).json({message : "Already enrolled!"})
+  }
+
   try {
-    console.log(req.body)
+    console.log(req.body);
     const result = await enrollmentService.enroll(
       req.session.userId,
       req.params.courseId

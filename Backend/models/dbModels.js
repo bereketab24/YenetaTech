@@ -21,6 +21,18 @@ exports.findUserByEmail = async (email) => {
     return error
   }
 }
+
+
+exports.findCoursesByid = async (user_id, course_id) => {
+  try{
+  const query = "SELECT * FROM users WHERE user_id = ? AND course_id = ?";
+  const [result] = await db.query(query, [user_id, course_id])
+  return result.length > 0
+  }
+  catch (error){
+    return error
+  }
+}
 //   return new Promise((resolve, reject) => {
 //     const query = "SELECT * FROM users WHERE email = ?";
 //     db.query(query, [email], (err, results) => {
