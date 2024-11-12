@@ -60,7 +60,7 @@ function Courselist() {
                         <h3>{course.course_name}</h3>
                         <div className="pricing">
                           <div className="btn-wrap">
-                            <Link to="/enroll" className="btn-buy">
+                            <Link to={`/student/${course.course_id}`} className="btn-buy">
                               Get in
                             </Link>
                           </div>

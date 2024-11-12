@@ -19,7 +19,7 @@ function Study() {
         
       }
     }
-    study(), [] 
+    study(), [courseId] 
   });
   return (
     <main id="main" className={`${adminstyle.main}`}>
