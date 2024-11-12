@@ -6,7 +6,7 @@ import adminstyle from "../../../../assets/styles/user/user.module.css"
 
 function Study() {
   const { courseId } = useParams();
-  const [course, setCourse] = useState(null);
+  const [course, setCourse] = useState();
   useEffect(() => {
     const study = async () => {
       try {
@@ -19,8 +19,8 @@ function Study() {
         
       }
     }
-    study(), [courseId] 
-  });
+    study()  
+  }, [courseId]);
   return (
     <main id="main" className={`${adminstyle.main}`}>
       <div className={`${adminstyle.pagetitle}`}>
