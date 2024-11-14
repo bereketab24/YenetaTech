@@ -5,7 +5,6 @@ import { fetchCourseDetails  } from "../../../Services/course.services";
   const CourseDetails = () => {
     const { courseId } = useParams(); // Get courseId from URL parameters
     const [course, setCourse] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
   
     useEffect(() => {
@@ -23,7 +22,6 @@ import { fetchCourseDetails  } from "../../../Services/course.services";
       getCourseDetails();
     }, [courseId]);
   
-    if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
   return (
     <div>

@@ -26,7 +26,7 @@ export const fetchCourseDetails = async (courseId) => {
 export const getCoursesbyCourseId = async (courseId) => {
   try {
     const response = await axios.get(`${backend_api}/courses/${courseId}`, {withCredentials:true});
-    console.log(response)
+    // console.log(response.data)
     return response.data;
   } catch (error) {
     console.error("Error fetching course details:", error);
