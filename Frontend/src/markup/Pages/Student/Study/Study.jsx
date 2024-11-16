@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { fetchCourseDetails } from "../../../../Services/course.services";
 import adminstyle from "../../../../assets/styles/user/user.module.css";
+import "./Study.css";
 
 function Study() {
   const { courseId } = useParams(); // Get courseId from URL parameters
@@ -21,17 +22,20 @@ function Study() {
     study();
   }, [courseId]);
 
-  
   return (
     <main id="main" className={`${adminstyle.main}`}>
       <div className={`${adminstyle.pagetitle}`}>
-        <h1>{course.course_name}</h1>
+        <h1>{course ? course.course_name : "course not found"}</h1>
       </div>
       <section id="courses" className="courses section">
         <div className="container">
           <div className="row">
             <div className="container">
-              
+              <div class="card">
+                <div class="card-body">
+                  This is some text within a card body.
+                </div>
+              </div>
             </div>
           </div>
         </div>
