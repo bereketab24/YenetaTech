@@ -1,6 +1,8 @@
 // services/authService.js
 const bcrypt = require("bcrypt");
 const db = require("../config/database");
+const sendVerificationEmail = require("../utils/emailSender")
+const crypto = require("crypto")
 
 // service for sign up
 exports.register = async (userData) => {

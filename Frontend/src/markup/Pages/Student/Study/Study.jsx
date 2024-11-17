@@ -72,5 +72,4 @@ function Study() {
     </main>
   );
 }
-npm 
 export default Study;
