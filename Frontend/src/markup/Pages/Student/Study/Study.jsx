@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { fetchCourseDetails } from "../../../../Services/course.services";
 import adminstyle from "../../../../assets/styles/user/user.module.css";
 import "./Study.css";
@@ -31,9 +32,37 @@ function Study() {
         <div className="container">
           <div className="row">
             <div className="container">
-              <div class="card">
-                <div class="card-body">
-                  This is some text within a card body.
+              <div className="card mb-2">
+                <div className="card-body">
+                  <a
+                    href={course ? course.course_video_url : "Loading"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Course Video
+                  </a>
+                </div>
+              </div>
+              <div className="card mb-2">
+                <div className="card-body">
+                <a
+                    href={course ? course.course_notes_url : "Loading"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Course Notes
+                  </a>
+                </div>
+              </div>
+              <div className="card mb-2">
+                <div className="card-body">
+                <a
+                    href={course ? course.course_assignment_url : "Loading"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Course Assignments
+                  </a>
                 </div>
               </div>
             </div>
