@@ -1,10 +1,13 @@
 const authService = require("../services/auth.service");
 const { validateEmail, validatePassword } = require("../utils/validators");
 const dbModels = require("../models/dbModels");
+const sendVerificationEmail = require("../utils/emailSender")
+const crypto = require("crypto")
+
 
 exports.register = async (req, res) => {
   console.log("Register request received");
-  const { fullname, username, email, password, roleId } = req.body;
+  const { fullname, username, email, password, roleId,} = req.body;
   // email, password, name;
   console.log("Received data:", req.body);
 
@@ -28,14 +31,47 @@ exports.register = async (req, res) => {
     return res.status(400).json({ message: "Email already registered" });
   }
 
+  const verificationCode = crypto.randomInt(100000, 999999).toString
+
+  await sendVerificationEmail(email, verificationCode);
+
   // Continue with the registration process...
   try {
-    const result = await authService.register(req.body);
+    const result = await authService.register(req.body, verificationCode);
     res.status(201).json(result);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
+// controllers/authController.js
+exports.verifyEmail = async (req, res) => {
+  const { email, code } = req.body;
+
+  try {
+    // Check if the code matches
+    const [user] = await db.query(
+      'SELECT * FROM users WHERE email = ? AND verification_code = ?',
+      [email, code]
+    );
+
+    if (user.length === 0) {
+      return res.status(400).json({ message: 'Invalid verification code or email' });
+    }
+
+    // Update user to mark as verified
+    await db.query(
+      'UPDATE users SET is_verified = 1, verification_code = NULL WHERE email = ?',
+      [email]
+    );
+
+    res.status(200).json({ message: 'Email successfully verified' });
+  } catch (error) {
+    console.error('Verification error:', error);
+    res.status(500).json({ message: 'Verification failed. Please try again later.' });
+  }
+};
+
 
 exports.login = async (req, res) => {
   try {
