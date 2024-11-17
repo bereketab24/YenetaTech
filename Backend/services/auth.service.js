@@ -27,10 +27,37 @@ exports.register = async (userData, verification_code) => {
       email,
       is_verified,
       roleId: studentRoleId,
+      message: 'Registration successful. Please check your email for the verification code.'
     };
   } catch (error) {
     // console.error("Error during registration:", error.message);  // Debugging line
     throw new Error("Registration failed: " + error.message);
+  }
+};
+
+// controllers/authController.js
+exports.verifyEmail = async (verificationData) => {
+  const { email, code } = verificationData;
+
+  try {
+    // Check if the code matches
+    const sql = `SELECT * FROM users WHERE email = ? AND verification_code = ?`;
+    const values = [email, code];
+    const [user] = await db.query(sql,values);
+
+    if (user.length === 0) {
+      return res.status(400).json({ message: 'Invalid verification code or email' });
+    }
+
+    // Update user to mark as verified
+    await db.query(
+      'UPDATE users SET is_verified = 1, verification_code = NULL WHERE email = ?',
+      [email]
+    );
+    return {message: 'Email successfully verified' }
+  } catch (error) {
+    console.error('Verification error:', error);
+    return {message: 'Verification failed. Please try again later.'}
   }
 };
 

@@ -50,10 +50,7 @@ exports.verifyEmail = async (req, res) => {
 
   try {
     // Check if the code matches
-    const [user] = await db.query(
-      'SELECT * FROM users WHERE email = ? AND verification_code = ?',
-      [email, code]
-    );
+    const result = await authService.verifyEmail(req.body)
 
     if (user.length === 0) {
       return res.status(400).json({ message: 'Invalid verification code or email' });
