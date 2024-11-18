@@ -26,12 +26,14 @@ function Courselist() {
       const response = await unenroll(courseId);
       if (response) {
         alert("Unenrolled Successfully");
-        setCourses(courses.filter((course) => course.course_id !== courseId))
+        setCourses(courses.filter((course) => course.course_id !== courseId));
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+  console.log(courses);
   return (
     <main id="main" className={`${adminstyle.main}`}>
       <div className={`${adminstyle.pagetitle}`}>
@@ -42,46 +44,57 @@ function Courselist() {
           <div className="row">
             <div className="container">
               <div className="row">
-                {courses.map((course) => (
-                  <div
-                    className="col-lg-4 col-md-6 align-items-center mb-5 mb-lg-3"
-                    key={course.course_id}
-                  >
-                    <div className="course-item shadow">
-                      <img
-                        src={course.course_image}
-                        className="img-fluid"
-                        alt="Course Image"
-                      />
-                      <div className="course-content">
-                        <div className="d-flex justify-content-between align-items-center mb-3">
-                          <p className="category">{course.category}</p>
-                        </div>
-                        <h3>{course.course_name}</h3>
-                        <div className="pricing">
-                          <div className="btn-wrap">
-                            <Link to={`/student/${course.course_id}`} className="btn-buy">
-                              Get in
-                            </Link>
+                {courses.length == 0 ? (
+                  <div className="container section-title ">
+                    <p className="text-center">
+                      You haven't enrolled in any course yet!
+                    </p>
+                  </div>
+                ) : (
+                  courses.map((course) => (
+                    <div
+                      className="col-lg-4 col-md-6 align-items-center mb-5 mb-lg-3"
+                      key={course.course_id}
+                    >
+                      <div className="course-item shadow">
+                        <img
+                          src={course.course_image}
+                          className="img-fluid"
+                          alt="Course Image"
+                        />
+                        <div className="course-content">
+                          <div className="d-flex justify-content-between align-items-center mb-3">
+                            <p className="category">{course.category}</p>
                           </div>
-                        </div>
-                        <div className="pricing">
-                          <div className="btn-wrap">
-                            <button
-                              onClick={() => {
-                                handleUnenroll(course.course_id);
-                              }}
-                              style={{ border: 0 }}
-                              className="btn-buy"
-                            >
-                              Unenroll
-                            </button>
+                          <h3>{course.course_name}</h3>
+                          <div className="pricing">
+                            <div className="btn-wrap">
+                              <Link
+                                to={`/student/${course.course_id}`}
+                                className="btn-buy"
+                              >
+                                Get in
+                              </Link>
+                            </div>
+                          </div>
+                          <div className="pricing">
+                            <div className="btn-wrap">
+                              <button
+                                onClick={() => {
+                                  handleUnenroll(course.course_id);
+                                }}
+                                style={{ border: 0 }}
+                                className="btn-buy"
+                              >
+                                Unenroll
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </div>
           </div>

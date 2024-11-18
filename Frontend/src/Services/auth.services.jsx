@@ -10,7 +10,16 @@ export const register = async (formdata) => {
     throw new Error(error.response.data.message || "Registration failed");
   }
 };
-
+export const verifyEmail = async (verificationData) => {
+  try {
+    const response = await axios.post(`${backend_api}/auth/verify-email`, verificationData)
+    return response.data
+    
+  } catch (error) {
+    throw new Error(error.response.data.message || "Verification failed");
+    
+  }
+}
 export const login = async (loginData) => {
   try {
     const response = await axios.post(`${backend_api}/auth/login`, loginData, {

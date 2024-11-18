@@ -72,6 +72,9 @@ exports.login = async (loginData) => {
       throw new Error("User not found");
     }
     const user = result[0];
+    if(!user.is_verified){
+      throw new Error("Email not verified. Please check your email to complete verification.");
+    }
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
       throw new Error("Invalid Password");
