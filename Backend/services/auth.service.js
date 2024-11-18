@@ -46,15 +46,16 @@ exports.verifyEmail = async (verificationData) => {
     const [user] = await db.query(sql,values);
 
     if (user){
-      return user;
-    }
+      
+    
 
     // Update user to mark as verified
-    await db.query(
+    const [response] = await db.query(
       'UPDATE users SET is_verified = 1, verification_code = NULL WHERE email = ?',
       [email]
     );
-    return {message: 'Email successfully verified' }
+    return response
+  }
   } catch (error) {
     console.error('Verification error:', error);
     return {message: 'Verification failed. Please try again later.'}

@@ -14,7 +14,7 @@ require("dotenv").config(); // Load environment variables from .env file
 const db = require("./config/database"); // MySQL connection
 const sessionConfig = require("./config/session"); // Session configuration
 const { isAuthenticated } = require("./middlewares/authMiddleware");
-const { handleErrors } = require("./middlewares/errorHandler");
+// const { handleErrors } = require("./middlewares/errorHandler");
 const { isAdmin } = require("./middlewares/roleMiddleware");
 
 // Import routes
@@ -60,7 +60,7 @@ app.use((req, res, next) => {
 });
 
 // Global Error Handler
-app.use(handleErrors);
+// app.use(handleErrors);
 
 // -------------------- Start the Server -------------------- //
 

@@ -1,13 +1,12 @@
 const authService = require("../services/auth.service");
 const { validateEmail, validatePassword } = require("../utils/validators");
 const dbModels = require("../models/dbModels");
-const sendVerificationEmail = require("../utils/emailSender")
-const crypto = require("crypto")
-
+const sendVerificationEmail = require("../utils/emailSender");
+const crypto = require("crypto");
 
 exports.register = async (req, res) => {
   console.log("Register request received");
-  const { fullname, username, email, password, roleId,} = req.body;
+  const { fullname, username, email, password, roleId } = req.body;
   // email, password, name;
   console.log("Received data:", req.body);
 
@@ -31,7 +30,7 @@ exports.register = async (req, res) => {
     return res.status(400).json({ message: "Email already registered" });
   }
 
-  const verificationCode = crypto.randomInt(100000, 999999).toString
+  const verificationCode = crypto.randomInt(100000, 999999).toString();
 
   await sendVerificationEmail(email, verificationCode);
 
@@ -46,21 +45,20 @@ exports.register = async (req, res) => {
 
 // controllers/authController.js
 exports.verifyEmail = async (req, res) => {
-
   try {
     // Check if the code matches
-    const result = await authService.verifyEmail(req.body)
-
+    console.log(req.body);
+    const result = await authService.verifyEmail(req.body);
+    console.log(result);
     if (result.length === 0) {
-      return res.status(400).json({ message: 'Invalid verification code or email' });
+      res.status(400).json({ message: "Invalid verification code or email" });
     }
     res.status(200).json(result);
   } catch (error) {
-    console.error('Verification error:', error);
+    console.error("Verification error:", error);
     res.status(500).json(result);
   }
 };
-
 
 exports.login = async (req, res) => {
   try {
@@ -82,7 +80,7 @@ exports.logout = (req, res) => {
       console.log("Error destroying session:", err);
       return res.status(500).json({ message: "Logout failed" });
     }
-    res.clearCookie("connect.sid", {path : "/"});
+    res.clearCookie("connect.sid", { path: "/" });
     console.log("Session destroyed and cookie cleared");
     res.status(200).json({ message: "Logout successful" });
   });
