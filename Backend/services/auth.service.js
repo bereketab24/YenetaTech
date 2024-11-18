@@ -45,8 +45,8 @@ exports.verifyEmail = async (verificationData) => {
     const values = [email, code];
     const [user] = await db.query(sql,values);
 
-    if (user.length === 0) {
-      return res.status(400).json({ message: 'Invalid verification code or email' });
+    if (user){
+      return user;
     }
 
     // Update user to mark as verified

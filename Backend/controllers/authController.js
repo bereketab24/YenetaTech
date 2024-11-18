@@ -46,26 +46,18 @@ exports.register = async (req, res) => {
 
 // controllers/authController.js
 exports.verifyEmail = async (req, res) => {
-  const { email, code } = req.body;
 
   try {
     // Check if the code matches
     const result = await authService.verifyEmail(req.body)
 
-    if (user.length === 0) {
+    if (result.length === 0) {
       return res.status(400).json({ message: 'Invalid verification code or email' });
     }
-
-    // Update user to mark as verified
-    await db.query(
-      'UPDATE users SET is_verified = 1, verification_code = NULL WHERE email = ?',
-      [email]
-    );
-
-    res.status(200).json({ message: 'Email successfully verified' });
+    res.status(200).json(result);
   } catch (error) {
     console.error('Verification error:', error);
-    res.status(500).json({ message: 'Verification failed. Please try again later.' });
+    res.status(500).json(result);
   }
 };
 
