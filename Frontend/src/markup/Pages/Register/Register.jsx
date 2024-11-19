@@ -78,7 +78,9 @@ function Register() {
 
     try {
       const userData = await register(formData);
-      navigate("/login");
+      // const data = await history.push("/login", formData)
+      // console.log(data)
+      navigate("/login", formData);
     } catch (error) {
       // console.log("Error response from server:", error.message);
       // let errorMessage = "An error occurred. Please try again later.";

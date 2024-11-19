@@ -37,7 +37,7 @@ exports.register = async (req, res) => {
   // Continue with the registration process...
   try {
     const result = await authService.register(req.body, verificationCode);
-    res.status(201).json(result);
+    res.status(201).json(result.message);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

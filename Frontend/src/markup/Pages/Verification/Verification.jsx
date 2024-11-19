@@ -1,68 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { login } from "../../../Services/auth.services";
+import { verifyEmail } from "../../../Services/auth.services";
 import classes from "../../../assets/styles/user/user.module.css";
 import logo1 from "../../../assets/images/logoYc.png";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+  const [OTP, setOTP] = useState("");
+//   const [veriCode, setVeriCode] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const storedEmail = localStorage.getItem("email");
-    const storedPassword = localStorage.getItem("password");
 
-    if (storedEmail && storedPassword) {
+    if (storedEmail) {
       setEmail(storedEmail);
-      setPassword(storedPassword);
-      setRememberMe(true);
     }
   }, []);
 
   //Error handling
   const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
   const [serverError, setServerError] = useState("");
 
-  const handleLogin = async (e) => {
+  const handleVerification = async (e) => {
     e.preventDefault();
     let valid = true;
 
-    if (!email) {
-      setEmailError("Please provide your Email!");
-      valid = false;
-    } else if (!email.includes("@")) {
-      setEmailError("Invalid email format!");
-      valid = false;
-    } else {
-      setEmailError("");
-    }
-
-    if (!password) {
-      setPasswordError("Please enter your Password!");
-      valid = false;
-    } else if (serverError) {
-      setPasswordError(serverError);
-      valid = false;
-    } else {
-      setPasswordError("");
-    }
-    if (rememberMe) {
-      localStorage.setItem("email", email);
-      localStorage.setItem("password", password);
-    } else {
-      localStorage.removeItem("email");
-      localStorage.removeItem("password");
-    }
-    if (!valid) {
-      return;
-    }
-
-    const loginData = {
-      email,
-      password,
+    const verificationData = {
+   OTP
     };
 
     try {
@@ -109,10 +73,10 @@ function Login() {
                         <h5
                           className={`${classes.cardtitle} text-center pb-0 fs-4`}
                         >
-                          Login to Your Account
+                          Verify Your Account
                         </h5>
                         <p className="text-center small">
-                          Enter your email & password to login
+                          Enter the code you received on your email.
                         </p>
                       </div>
                       {serverError && (
@@ -127,18 +91,16 @@ function Login() {
                         noValidate
                       >
                         <div className="col-12">
-                          <label htmlFor="yourEmail" className="form-label">
-                            Email
+                          <label htmlFor="yourEmail" className="form-label text-center">
+                            Code
                           </label>
                           <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="text"
+                            value={OTP}
+                            onChange={(e) => setOTP(e.target.value)}
                             className={`form-control ${
                               emailError ? "is-invalid" : ""
                             }`}
-                            id="yourEmail"
-                            autoComplete="email"
                           />
                           <div className="invalid-feedback">{emailError}</div>
                         </div>
