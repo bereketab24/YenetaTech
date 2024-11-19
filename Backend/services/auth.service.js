@@ -25,7 +25,7 @@ exports.register = async (userData, verification_code) => {
       fullname,
       username,
       email,
-      is_verified,
+      // is_verified,
       roleId: studentRoleId,
       message: 'Registration successful. Please check your email for the verification code.'
     };
@@ -45,16 +45,19 @@ exports.verifyEmail = async (verificationData) => {
     const values = [email, code];
     const [user] = await db.query(sql,values);
 
+    // console.log("This is from me ",user)
+
     if (user){
       
     
 
     // Update user to mark as verified
-    const [response] = await db.query(
+    await db.query(
       'UPDATE users SET is_verified = 1, verification_code = NULL WHERE email = ?',
       [email]
     );
-    return response
+    // console.log("response from veri update:" , response)
+    return user
   }
   } catch (error) {
     console.error('Verification error:', error);

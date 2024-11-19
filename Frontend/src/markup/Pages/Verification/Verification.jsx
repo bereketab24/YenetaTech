@@ -9,34 +9,23 @@ function Login() {
 //   const [veriCode, setVeriCode] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const storedEmail = localStorage.getItem("email");
-
-    if (storedEmail) {
-      setEmail(storedEmail);
-    }
-  }, []);
-
-  //Error handling
-  const [emailError, setEmailError] = useState("");
   const [serverError, setServerError] = useState("");
 
   const handleVerification = async (e) => {
     e.preventDefault();
-    let valid = true;
-
-    const verificationData = {
-   OTP
-    };
-
     try {
-      const userData = await login(loginData);
-      const roleid = userData.data.user.role_id
+      const response = await verifyEmail(OTP);
+    //   const roleid = userData.data.user.role_id
+      if (response.is_verified) {
+        const roleid = response.role_id
       if (roleid === 1) {
         navigate("/admin");
       } else if (roleid === 2) {
         navigate("/student");
       }
+        
+      }
+      
     } catch (error) {
       console.log("Error response from server:", error.message);
       let errorMessage = "An error occurred. Please try again later.";
@@ -75,8 +64,9 @@ function Login() {
                         >
                           Verify Your Account
                         </h5>
-                        <p className="text-center small">
-                          Enter the code you received on your email.
+                        <p className="text-center alert alert-success">
+                        Registration successful! {" "} Please check your email for the verification code and verify your email!.
+                        
                         </p>
                       </div>
                       {serverError && (
@@ -92,7 +82,7 @@ function Login() {
                       >
                         <div className="col-12">
                           <label htmlFor="yourEmail" className="form-label text-center">
-                            Code
+                          Enter the code
                           </label>
                           <input
                             type="text"
