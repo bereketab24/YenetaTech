@@ -3,16 +3,18 @@ import { useNavigate, Link } from "react-router-dom";
 import { verifyEmail } from "../../../Services/auth.services";
 import classes from "../../../assets/styles/user/user.module.css";
 import logo1 from "../../../assets/images/logoYc.png";
+import { useAuth } from "../../../Contexts/Authcontext";
 
 function Login() {
   const [OTP, setOTP] = useState("");
   const navigate = useNavigate();
   const [serverError, setServerError] = useState("");
+  const {authData} = useAuth()
 
   const handleVerification = async (e) => {
     e.preventDefault();
     try {
-      const response = await verifyEmail(OTP);
+      const response = await verifyEmail(OTP,authData);
     //   const roleid = userData.data.user.role_id
       if (response.is_verified) {
         const roleid = response.role_id

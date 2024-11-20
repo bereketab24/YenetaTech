@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { register } from "../../../Services/auth.services";
 import logo1 from "../../../assets/images/logoYc.png";
 import classes from "../../../assets/styles/user/user.module.css";
+import { useAuth } from "../../../Contexts/Authcontext";
 
 function Register() {
   const [fullname, setFullname] = useState("");
@@ -11,6 +12,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
   const navigate = useNavigate();
+  const { updateEmail } = useAuth();
 
   const [fullnamerequired, setFullnamerequired] = useState("");
   const [usernamerequired, setUsernamerequired] = useState("");
@@ -75,6 +77,8 @@ function Register() {
       email,
       password,
     };
+
+    updateEmail(formData.email)
 
     try {
       const userData = await register(formData);
