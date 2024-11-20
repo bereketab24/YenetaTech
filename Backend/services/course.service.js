@@ -98,7 +98,7 @@ exports.updateCourse = async (id, courseData) => {
       id,
     ];
     const [results] = await db.query(sql, values);
-    console.log(results)
+    console.log(results);
     return results.affectedRows > 0;
   } catch (error) {
     throw new Error(error.message);

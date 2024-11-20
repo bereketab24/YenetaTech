@@ -9,32 +9,36 @@ function Login() {
   const [OTP, setOTP] = useState("");
   const navigate = useNavigate();
   const [serverError, setServerError] = useState("");
-  const {authData} = useAuth()
+  const { authData } = useAuth();
+ const email = authData.email
+  console.log(authData);
+
+  const verificationData = [{ OTP, email }];
+
+  console.log(verificationData)
 
   const handleVerification = async (e) => {
     e.preventDefault();
     try {
-      const response = await verifyEmail(OTP,authData);
-    //   const roleid = userData.data.user.role_id
+      const response = await verifyEmail(verificationData);
+      //   const roleid = userData.data.user.role_id
       if (response.is_verified) {
-        const roleid = response.role_id
-      if (roleid === 1) {
-        navigate("/admin");
-      } else if (roleid === 2) {
-        navigate("/student");
+        const roleid = response.role_id;
+        if (roleid === 1) {
+          navigate("/admin");
+        } else if (roleid === 2) {
+          navigate("/student");
+        }
       }
-        
-      }
-      
     } catch (error) {
-      console.log("Error response from server:", error.message);
-      let errorMessage = "An error occurred. Please try again later.";
+    //   console.log("Error response from server:", error.message);
+    //   let errorMessage = "An error occurred. Please try again later.";
 
-      if (error.message) {
-        errorMessage = error.message;
-      }
+    //   if (error.message) {
+    //     errorMessage = error.message;
+    //   }
 
-      setServerError(errorMessage);
+      setServerError(error);
     }
   };
 
@@ -65,9 +69,12 @@ function Login() {
                           Verify Your Account
                         </h5>
                         <p className="text-center alert alert-success">
-                        Registration successful! {" "} 
+                          Registration successful!{" "}
                         </p>
-                        <p className="">Please check your email for the verification code and verify your email!.</p>
+                        <p className="">
+                          Please check your email for the verification code and
+                          verify your email!.
+                        </p>
                       </div>
                       {/* {serverError && (
                         <div className="alert alert-danger" role="alert">
@@ -81,8 +88,11 @@ function Login() {
                         noValidate
                       >
                         <div className="col-12">
-                          <label htmlFor="yourEmail" className="form-label text-center">
-                          Enter the code
+                          <label
+                            htmlFor="yourEmail"
+                            className="form-label text-center"
+                          >
+                            Enter the code
                           </label>
                           <input
                             type="text"

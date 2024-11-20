@@ -8,7 +8,7 @@ exports.enroll = async (req, res) => {
   );
   // console.log(enrollmentChecker);
   if (enrollmentChecker) {
-    return res.status(400).json({message : "Already enrolled!"})
+    return res.status(400).json({ message: "Already enrolled!" });
   }
 
   try {

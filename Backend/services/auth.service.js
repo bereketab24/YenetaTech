@@ -2,7 +2,7 @@
 const bcrypt = require("bcrypt");
 const db = require("../config/database");
 const crypto = require("crypto");
-const sendVerificationEmail = require("../utils/emailSender")
+const sendVerificationEmail = require("../utils/emailSender");
 // service for sign up
 exports.register = async (userData, verification_code) => {
   try {
@@ -16,8 +16,16 @@ exports.register = async (userData, verification_code) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const sql = `INSERT INTO users (fullname, username, email, password, role_id, is_verified, verification_code) VALUES (?, ?, ?, ?,?, ?,?)`;
-    const values = [fullname, username, email, hashedPassword, studentRoleId, 0 , verification_code];
-    
+    const values = [
+      fullname,
+      username,
+      email,
+      hashedPassword,
+      studentRoleId,
+      0,
+      verification_code,
+    ];
+
     const [result] = await db.query(sql, values);
 
     return {
@@ -27,7 +35,8 @@ exports.register = async (userData, verification_code) => {
       email,
       // is_verified,
       roleId: studentRoleId,
-      message: 'Registration successful. Please check your email for the verification code.'
+      message:
+        "Registration successful. Please check your email for the verification code.",
     };
   } catch (error) {
     // console.error("Error during registration:", error.message);  // Debugging line
@@ -43,25 +52,22 @@ exports.verifyEmail = async (verificationData) => {
     // Check if the code matches
     const sql = `SELECT * FROM users WHERE email = ? AND verification_code = ?`;
     const values = [email, code];
-    const [user] = await db.query(sql,values);
+    const [user] = await db.query(sql, values);
 
     // console.log("This is from me ",user)
 
-    if (user){
-      
-    
-
-    // Update user to mark as verified
-    await db.query(
-      'UPDATE users SET is_verified = 1, verification_code = NULL WHERE email = ?',
-      [email]
-    );
-    // console.log("response from veri update:" , response)
-    return user
-  }
+    if (user) {
+      // Update user to mark as verified
+      await db.query(
+        "UPDATE users SET is_verified = 1, verification_code = NULL WHERE email = ?",
+        [email]
+      );
+      // console.log("response from veri update:" , response)
+      return user;
+    }
   } catch (error) {
-    console.error('Verification error:', error);
-    return {message: 'Verification failed. Please try again later.'}
+    console.error("Verification error:", error);
+    return { message: "Verification failed. Please try again later." };
   }
 };
 
@@ -75,8 +81,10 @@ exports.login = async (loginData) => {
       throw new Error("User not found");
     }
     const user = result[0];
-    if(!user.is_verified){
-      throw new Error("Email not verified. Please check your email to complete verification.");
+    if (!user.is_verified) {
+      throw new Error(
+        "Email not verified. Please check your email to complete verification."
+      );
     }
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
