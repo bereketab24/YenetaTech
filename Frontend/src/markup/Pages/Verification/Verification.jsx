@@ -6,9 +6,7 @@ import logo1 from "../../../assets/images/logoYc.png";
 
 function Login() {
   const [OTP, setOTP] = useState("");
-//   const [veriCode, setVeriCode] = useState("");
   const navigate = useNavigate();
-
   const [serverError, setServerError] = useState("");
 
   const handleVerification = async (e) => {
@@ -65,18 +63,18 @@ function Login() {
                           Verify Your Account
                         </h5>
                         <p className="text-center alert alert-success">
-                        Registration successful! {" "} Please check your email for the verification code and verify your email!.
-                        
+                        Registration successful! {" "} 
                         </p>
+                        <p className="">Please check your email for the verification code and verify your email!.</p>
                       </div>
-                      {serverError && (
+                      {/* {serverError && (
                         <div className="alert alert-danger" role="alert">
                           {serverError}
                         </div>
-                      )}
+                      )} */}
 
                       <form
-                        onSubmit={handleLogin}
+                        onSubmit={handleVerification}
                         className="row g-3 needs-validation"
                         noValidate
                       >
@@ -87,15 +85,16 @@ function Login() {
                           <input
                             type="text"
                             value={OTP}
+                            placeholder="Enter the code"
                             onChange={(e) => setOTP(e.target.value)}
                             className={`form-control ${
-                              emailError ? "is-invalid" : ""
+                              serverError ? "is-invalid" : ""
                             }`}
                           />
-                          <div className="invalid-feedback">{emailError}</div>
+                          <div className="invalid-feedback">{serverError}</div>
                         </div>
 
-                        <div className="col-12">
+                        {/* <div className="col-12">
                           <label htmlFor="yourPassword" className="form-label">
                             Password
                           </label>
@@ -112,9 +111,9 @@ function Login() {
                           <div className="invalid-feedback">
                             {passwordError}
                           </div>
-                        </div>
+                        </div> */}
 
-                        <div className="col-12">
+                        {/* <div className="col-12">
                           <div className="form-check">
                             <input
                               className={`form-check-input`}
@@ -130,21 +129,21 @@ function Login() {
                               Remember me
                             </label>
                           </div>
-                        </div>
+                        </div> */}
                         <div className="col-12">
                           <button
                             className="btn btn-primary w-100"
                             type="submit"
                           >
-                            Login
+                            Verify
                           </button>
                         </div>
-                        <div className="col-12">
+                        {/* <div className="col-12">
                           <p className="small mb-0">
                             Don't have account?
                             <Link to="/register"> Create an account</Link>
                           </p>
-                        </div>
+                        </div> */}
                       </form>
                     </div>
                   </div>

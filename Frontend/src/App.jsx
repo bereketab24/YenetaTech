@@ -25,6 +25,7 @@ import StudentLayout from "./markup/components/StudentLayout/StudentLayout.jsx";
 import Mycourses from "./markup/Pages/Student/Mycourses/Mycourses.jsx";
 import Study from "./markup/Pages/Student/Study/Study.jsx";
 import Courselist from "./markup/Pages/Student/Courselist/Courselist.jsx"
+import Verification from "./markup/Pages/Verification/Verification.jsx"
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/verification" element={<Verification/>} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
