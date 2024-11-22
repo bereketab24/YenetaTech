@@ -10,15 +10,7 @@ exports.getUserById = async (userId) => {
     throw new Error(error.message);
   }
 };
-// exports.getUserById = (userId) => {
-//   const sql = "SELECT * FROM users WHERE id = ?";
-//   return new Promise((resolve, reject) => {
-//     db.query(sql, [userId], (err, results) => {
-//       if (err) return reject(err);
-//       resolve(results[0]);
-//     });
-//   });
-// };
+
 exports.updateUser = async (userId, userData) => {
   try {
     const { username, email } = userData;
