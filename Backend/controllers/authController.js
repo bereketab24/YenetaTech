@@ -48,11 +48,16 @@ exports.verifyEmail = async (req, res) => {
   try {
     // Check if the code matches
     console.log(req.body);
+    console.log(req.body);
+    console.log(req.body);
     const result = await authService.verifyEmail(req.body);
+
     console.log(result);
     if (result.length === 0) {
       res.status(400).json({ message: "Invalid verification code or email" });
     }
+    req.session.userId = result.user_id; // Store user ID in session
+    req.session.roleId = result.role_id; // Store user role in session
     res.status(200).json(result);
   } catch (error) {
     console.error("Verification error:", error);

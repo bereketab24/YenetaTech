@@ -46,24 +46,30 @@ exports.register = async (userData, verification_code) => {
 
 // controllers/authController.js
 exports.verifyEmail = async (verificationData) => {
-  const { email, code } = verificationData;
+  const { email, OTP } = verificationData;
+  console.log(verificationData);
+  console.log(email, "Here you are", OTP);
 
   try {
     // Check if the code matches
     const sql = `SELECT * FROM users WHERE email = ? AND verification_code = ?`;
-    const values = [email, code];
+    const values = [email, OTP];
     const [user] = await db.query(sql, values);
 
-    // console.log("This is from me ",user)
+    console.log("This is from me ", user);
 
     if (user) {
       // Update user to mark as verified
-      await db.query(
+      const response = await db.query(
         "UPDATE users SET is_verified = 1, verification_code = NULL WHERE email = ?",
         [email]
       );
-      // console.log("response from veri update:" , response)
-      return user;
+      const sql = `SELECT * FROM users WHERE email = ?`;
+      const values = [email];
+      const [response1] = await db.query(sql, values);
+      console.log("this is from res1", response1);
+      console.log("response from veri update:", response);
+      return response1[0];
     }
   } catch (error) {
     console.error("Verification error:", error);

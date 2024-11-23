@@ -12,7 +12,9 @@ export const register = async (formdata) => {
 };
 export const verifyEmail = async (verificationData) => {
   try {
+    console.log(verificationData)
     const response = await axios.post(`${backend_api}/auth/verify-email`, verificationData)
+    console.log(response)
     return response.data
     
   } catch (error) {

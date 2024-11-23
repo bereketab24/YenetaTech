@@ -5,7 +5,7 @@ import classes from "../../../assets/styles/user/user.module.css";
 import logo1 from "../../../assets/images/logoYc.png";
 import { useAuth } from "../../../Contexts/Authcontext";
 
-function Login() {
+function Verify() {
   const [OTP, setOTP] = useState("");
   const navigate = useNavigate();
   const [serverError, setServerError] = useState("");
@@ -13,7 +13,7 @@ function Login() {
  const email = authData.email
   console.log(authData);
 
-  const verificationData = [{ OTP, email }];
+  const verificationData = { OTP, email };
 
   console.log(verificationData)
 
@@ -21,6 +21,7 @@ function Login() {
     e.preventDefault();
     try {
       const response = await verifyEmail(verificationData);
+      console.log(response)
       //   const roleid = userData.data.user.role_id
       if (response.is_verified) {
         const roleid = response.role_id;
@@ -38,7 +39,7 @@ function Login() {
     //     errorMessage = error.message;
     //   }
 
-      setServerError(error);
+      setServerError(error.message);
     }
   };
 
@@ -169,4 +170,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Verify;
