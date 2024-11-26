@@ -31,7 +31,7 @@ exports.register = async (userData, verification_code) => {
     return {
       id: result.insertId,
       fullname,
-      username,
+      // username,
       email,
       // is_verified,
       roleId: studentRoleId,
