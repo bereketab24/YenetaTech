@@ -7,7 +7,7 @@ import { useAuth } from "../../../Contexts/Authcontext";
 
 function Register() {
   const [fullname, setFullname] = useState("");
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
@@ -15,7 +15,7 @@ function Register() {
   const { updateEmail } = useAuth();
 
   const [fullnamerequired, setFullnamerequired] = useState("");
-  const [usernamerequired, setUsernamerequired] = useState("");
+  // const [usernamerequired, setUsernamerequired] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [termsAcceptedError, setTermsAcceptedError] = useState("");
@@ -32,12 +32,12 @@ function Register() {
       setFullnamerequired("");
     }
 
-    if (!username) {
-      setUsernamerequired("Please provide your Username!");
-      valid = false;
-    } else {
-      setUsernamerequired("");
-    }
+    // if (!username) {
+    //   setUsernamerequired("Please provide your Username!");
+    //   valid = false;
+    // } else {
+    //   setUsernamerequired("");
+    // }
 
     if (!email) {
       setEmailError("Please provide your Email!");
@@ -73,7 +73,7 @@ function Register() {
 
     const formData = {
       fullname,
-      username,
+      // username,
       email,
       password,
     };
@@ -81,7 +81,7 @@ function Register() {
     updateEmail(formData.email)
 
     try {
-      const userData = await register(formData);
+       await register(formData);
       // const data = await history.push("/login", formData)
       // console.log(data)
       navigate("/verification", formData);
@@ -184,7 +184,7 @@ function Register() {
                         <div className="invalid-feedback">{emailError}</div>
                       </div>
 
-                      <div className="col-12">
+                      {/* <div className="col-12">
                         <label htmlFor="yourUsername" className="form-label">
                           Username
                         </label>
@@ -209,7 +209,7 @@ function Register() {
                             {usernamerequired}
                           </div>
                         </div>
-                      </div>
+                      </div> */}
 
                       <div className="col-12">
                         <label htmlFor="yourPassword" className="form-label">
