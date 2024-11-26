@@ -6,7 +6,7 @@ const sendVerificationEmail = require("../utils/emailSender");
 // service for sign up
 exports.register = async (userData, verification_code) => {
   try {
-    const { fullname, username, email, password } = userData;
+    const { fullname,  email, password } = userData;
 
     // Fetch the role_id for "student"
     const [roleResult] = await db.query(
