@@ -15,7 +15,7 @@ exports.register = async (userData, verification_code) => {
     const studentRoleId = roleResult[0].role_id;
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const sql = `INSERT INTO users (fullname, username, email, password, role_id, is_verified, verification_code) VALUES (?, ?, ?, ?,?, ?,?)`;
+    const sql = `INSERT INTO users (fullname,  email, password, role_id, is_verified, verification_code) VALUES (?, ?, ?, ?,?, ?,?)`;
     const values = [
       fullname,
       username,
