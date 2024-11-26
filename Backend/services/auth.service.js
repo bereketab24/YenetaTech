@@ -18,7 +18,7 @@ exports.register = async (userData, verification_code) => {
     const sql = `INSERT INTO users (fullname,  email, password, role_id, is_verified, verification_code) VALUES (?, ?, ?, ?,?, ?,?)`;
     const values = [
       fullname,
-      username,
+      
       email,
       hashedPassword,
       studentRoleId,
