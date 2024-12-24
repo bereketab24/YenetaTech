@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box, Button } from "@mui/material";
 import adminstyle from "../../../../assets/styles/user/user.module.css";
-import { getalluser , deleteuser } from "../../../../Services/admin.services";
+import { getalluser, deleteuser } from "../../../../Services/admin.services";
 
 const Userdata = () => {
   const [users, setUsers] = useState([]);
@@ -21,29 +21,32 @@ const Userdata = () => {
   console.log(users);
   const handleDeleteUser = async (userId) => {
     try {
-        await deleteuser(userId)
-        alert("User deleted successfully")
-        setUsers(users.filter((user)=> user.user_id !== userId))
-        
+      await deleteuser(userId);
+      alert("User deleted successfully");
+      setUsers(users.filter((user) => user.user_id !== userId));
     } catch (error) {
-        alert("Failed to delete user");
-        
+      alert("Failed to delete user");
     }
-  }
+  };
   const columns = [
     { field: "user_id", headerName: "User_ID", width: 150 },
     { field: "role_id", headerName: "Role_ID", width: 150 },
     { field: "fullname", headerName: "Name", width: 350 },
-    { field: "username", headerName: "User Name", width: 350 },
     { field: "email", headerName: "Email", width: 350 },
     {
       field: "actions",
       headerName: "Action",
-      width: 150,
+      width: 550,
       renderCell: (params) => (
         <>
           <Box
-            sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "100%" }}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "100%",
+            }}
           >
             <Button
               variant="contained"
