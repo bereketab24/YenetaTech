@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { verifyEmail } from "../../../Services/auth.services";
 import classes from "../../../assets/styles/user/user.module.css";
@@ -11,7 +11,7 @@ function Verify() {
   const [serverError, setServerError] = useState("");
   const { authData } = useAuth();
  const email = authData.email
-  console.log(authData);
+  // console.log(authData);
 
   const verificationData = { OTP, email };
 

@@ -47,8 +47,8 @@ exports.register = async (userData, verification_code) => {
 // controllers/authController.js
 exports.verifyEmail = async (verificationData) => {
   const { email, OTP } = verificationData;
-  console.log(verificationData);
-  console.log(email, "Here you are", OTP);
+  // console.log(verificationData);
+  // console.log(email, "Here you are", OTP);
 
   try {
     // Check if the code matches
@@ -56,7 +56,7 @@ exports.verifyEmail = async (verificationData) => {
     const values = [email, OTP];
     const [user] = await db.query(sql, values);
 
-    console.log("This is from me ", user);
+    // console.log("This is from me ", user);
 
     if (user) {
       // Update user to mark as verified
@@ -67,8 +67,8 @@ exports.verifyEmail = async (verificationData) => {
       const sql = `SELECT * FROM users WHERE email = ?`;
       const values = [email];
       const [response1] = await db.query(sql, values);
-      console.log("this is from res1", response1);
-      console.log("response from veri update:", response);
+      // console.log("this is from res1", response1);
+      // console.log("response from veri update:", response);
       return response1[0];
     }
   } catch (error) {

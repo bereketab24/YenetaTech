@@ -7,7 +7,7 @@ import "./Study.css";
 function Study() {
   const { courseId } = useParams(); // Get courseId from URL parameters
   const [course, setCourse] = useState();
-  const [error, setError] = useState(null);
+
   useEffect(() => {
     const study = async () => {
       try {
@@ -15,7 +15,9 @@ function Study() {
         console.log(response);
         setCourse(response);
       } catch (error) {
-        setError(error);
+        
+    
+        throw new Error(error)
       }
     };
     study();
@@ -24,7 +26,7 @@ function Study() {
   return (
     <main id="main" className={`${adminstyle.main}`}>
       <div className={`${adminstyle.pagetitle}`}>
-        <h1>{error ? error : "Unknown Error!"}</h1>
+        
         <h1>{course ? course.course_name : "course not found"}</h1>
       </div>
       <section id="courses" className="courses section">

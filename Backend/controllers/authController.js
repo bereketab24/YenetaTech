@@ -47,12 +47,12 @@ exports.register = async (req, res) => {
 exports.verifyEmail = async (req, res) => {
   try {
     // Check if the code matches
-    console.log(req.body);
-    console.log(req.body);
-    console.log(req.body);
+    // console.log(req.body);
+    // console.log(req.body);
+    // console.log(req.body);
     const result = await authService.verifyEmail(req.body);
 
-    console.log(result);
+    // console.log(result);
     if (result.length === 0) {
       res.status(400).json({ message: "Invalid verification code or email" });
     }
