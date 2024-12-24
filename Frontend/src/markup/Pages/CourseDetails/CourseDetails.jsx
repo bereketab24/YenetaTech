@@ -1,28 +1,31 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { fetchCourseDetails  } from "../../../Services/course.services";
+import { fetchCourseDetails } from "../../../Services/course.services";
 
-  const CourseDetails = () => {
-    const { courseId } = useParams(); // Get courseId from URL parameters
-    const [course, setCourse] = useState(null);
-    const [error, setError] = useState(null);
-  
-    useEffect(() => {
-      const getCourseDetails = async () => {
-        try {
-          const data = await fetchCourseDetails(courseId);
-          setCourse(data);
-        } catch (err) {
-          setError('Error fetching course details');
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-      getCourseDetails();
-    }, [courseId]);
-  
-    if (error) return <div>{error}</div>;
+const CourseDetails = () => {
+  const { courseId } = useParams(); // Get courseId from URL parameters
+  const [course, setCourse] = useState(null);
+  const [error, setError] = useState(null);
+  console.log(course);
+
+  useEffect(() => {
+    console.log("Hello!");
+    const getCourseDetails = async () => {
+      try {
+        console.log(courseId);
+        console.log("Hi");
+        const data = await fetchCourseDetails(courseId);
+        console.log(data);
+        setCourse(data);
+      } catch (error) {
+        setError(error);
+      }
+    };
+
+    getCourseDetails();
+  }, [courseId]);
+
+  if (error) return <div>{error}</div>;
   return (
     <div>
       <main className="main">
@@ -31,9 +34,9 @@ import { fetchCourseDetails  } from "../../../Services/course.services";
             <div className="container">
               <div className="row d-flex justify-content-center text-center">
                 <div className="col-lg-8">
-                  <h1>{course.course_name}</h1>
+                  <h1>{course ? course.course_name : "Loading"}</h1>
                   <p className="mb-0">
-                    {course.description}
+                    {course ? course.description : "Loading..."}
                   </p>
                 </div>
               </div>
@@ -45,7 +48,9 @@ import { fetchCourseDetails  } from "../../../Services/course.services";
                 <li>
                   <Link to="/">Home</Link>
                 </li>
-                <li className="current">{course.course_name}</li>
+                <li className="current">
+                  {course ? course.course_name : "Loading"}
+                </li>
               </ol>
             </div>
           </nav>
@@ -57,11 +62,13 @@ import { fetchCourseDetails  } from "../../../Services/course.services";
           <div className="container">
             <div className="row">
               <div className="col-lg-7">
-                <img src={course.course_image} className="img-fluid" alt="" />
-                <h3>{course.course_name}</h3>
-                <p>
-                  {course.course_description}
-                </p>
+                <img
+                  src={course ? course.course_image : "Loading"}
+                  className="img-fluid"
+                  alt=""
+                />
+                <h3>{course ? course.course_name : "Loading..."}</h3>
+                <p>{course ? course.course_description : "Loading..."}</p>
                 <section id="about" className="about section">
                   <div className="container">
                     <div className="row gy-4">
@@ -74,8 +81,8 @@ import { fetchCourseDetails  } from "../../../Services/course.services";
                               <strong>
                                 Comprehensive Amharic curriculum:{" "}
                               </strong>
-                              Learn MERN Stack concepts and best practices in
-                              Amharic.
+                              Learn {course ? course.course_name : "Loading"}{" "}
+                              concepts and best practices in Amharic.
                             </span>
                           </li>
                           <li>
@@ -92,7 +99,7 @@ import { fetchCourseDetails  } from "../../../Services/course.services";
                               {" "}
                               <strong>Expert Amharic instructors: </strong>
                               Benefit from the guidance of experienced
-                              Amharic-speaking MERN Stack developers.
+                              Amharic-speaking trainers.
                             </span>
                           </li>
                           <li>
@@ -107,16 +114,15 @@ import { fetchCourseDetails  } from "../../../Services/course.services";
                             <i className="bi bi-check-circle"></i>
                             <span>
                               <strong>Career-oriented: </strong>Gain the skills
-                              and knowledge needed to land a job as a MERN Stack
-                              developer all over the globe.
+                              and knowledge needed to land a job.
                             </span>
                           </li>
                         </ul>
                         <p>
                           <b>
-                            Enroll today and embark on a rewarding journey into
-                            full-stack web development in Amharic, absolutely
-                            free!
+                            Enroll today and embark on a rewarding journey into{" "}
+                            {course ? course.course_name : "Loading"} in
+                            Amharic.
                           </b>
                         </p>
                       </div>
@@ -128,21 +134,21 @@ import { fetchCourseDetails  } from "../../../Services/course.services";
                 <div className="course-info d-flex justify-content-between align-items-center">
                   <h5>Trainer</h5>
                   <p>
-                    <b>{course.trainer}</b>
+                    <b>{course ? course.trainer : "Loading..."}</b>
                   </p>
                 </div>
 
                 <div className="course-info d-flex justify-content-between align-items-center">
                   <h5>Course Fee</h5>
-                  <p>{course.course_fee}</p>
+                  <p>{course ? course.course_fee : "Loading..."}</p>
                 </div>
                 <div className="course-info d-flex justify-content-between align-items-center">
                   <h5>Schedule</h5>
-                  <p>{course.schedule}</p>
+                  <p>{course ? course.schedule : "Loading"}</p>
                 </div>
                 <div className="pricing">
                   <div className="btn-wrap">
-                    <Link to="/enroll" className="btn-buy">
+                    <Link to="/login" className="btn-buy">
                       Enroll
                     </Link>
                   </div>
@@ -154,6 +160,6 @@ import { fetchCourseDetails  } from "../../../Services/course.services";
       </main>
     </div>
   );
-}
+};
 
 export default CourseDetails;

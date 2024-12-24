@@ -49,7 +49,7 @@ function Courses() {
                 <div className="pricing">
                   {course.course_fee}
                   <div className="btn-wrap">
-                    <Link to="/enroll" className="btn-buy">
+                    <Link to="/login" className="btn-buy">
                       Enroll
                     </Link>
                   </div>
