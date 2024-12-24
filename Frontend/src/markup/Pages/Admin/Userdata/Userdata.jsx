@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box, Button } from "@mui/material";
 import adminstyle from "../../../../assets/styles/user/user.module.css";
@@ -13,7 +13,7 @@ const Userdata = () => {
         const response = await getalluser();
         setUsers(response.data);
       } catch (error) {
-        throw new Error();
+        throw new Error(error);
       }
     };
     GetAllUsers();
@@ -25,7 +25,7 @@ const Userdata = () => {
       alert("User deleted successfully");
       setUsers(users.filter((user) => user.user_id !== userId));
     } catch (error) {
-      alert("Failed to delete user");
+      alert(error);
     }
   };
   const columns = [
