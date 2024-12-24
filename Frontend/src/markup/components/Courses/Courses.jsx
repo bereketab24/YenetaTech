@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import course1 from "../../../assets/images/course-1.jpg";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchData } from "../../../Services/course.services";
 
@@ -44,8 +43,8 @@ function Courses() {
                 </h3>
                 <p className="description">
                   {course.description}
-                  {"  "}
-                  <strong>No Prior Knowledge Required!</strong>
+                  <br />
+                  <b>No Prior Knowledge Required!</b>
                 </p>
                 <div className="pricing">
                   {course.course_fee}

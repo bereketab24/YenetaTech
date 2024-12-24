@@ -109,6 +109,7 @@ exports.deleteCourse = async (id) => {
   try {
     const sql = "DELETE FROM courses WHERE course_id = ?";
     const [result] = await db.query(sql, [id]);
+    console.log(result)
     return result.affectedRows > 0;
   } catch (error) {
     throw new Error(error.message);

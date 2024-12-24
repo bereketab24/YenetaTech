@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { enroll } from "../../../../Services/enrollment.services";
 import { fetchData } from "../../../../Services/course.services";
@@ -73,7 +73,7 @@ function Courselist() {
                         </h3>
                         <p className="description">
                           {course.description}
-                          {"  "}
+                          <br />
                           <strong>No Prior Knowledge Required!</strong>
                         </p>
                         <div className="pricing">

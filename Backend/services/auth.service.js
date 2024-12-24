@@ -6,7 +6,7 @@ const sendVerificationEmail = require("../utils/emailSender");
 // service for sign up
 exports.register = async (userData, verification_code) => {
   try {
-    const { fullname,  email, password } = userData;
+    const { fullname, email, password } = userData;
 
     // Fetch the role_id for "student"
     const [roleResult] = await db.query(
@@ -15,10 +15,10 @@ exports.register = async (userData, verification_code) => {
     const studentRoleId = roleResult[0].role_id;
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const sql = `INSERT INTO users (fullname,  email, password, role_id, is_verified, verification_code) VALUES (?, ?, ?, ?,?, ?,?)`;
+    const sql = `INSERT INTO users (fullname,  email, password, role_id, is_verified, verification_code) VALUES (?, ?, ?, ?,?, ?)`;
     const values = [
       fullname,
-      
+
       email,
       hashedPassword,
       studentRoleId,

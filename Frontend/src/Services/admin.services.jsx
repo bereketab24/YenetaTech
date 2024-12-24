@@ -14,6 +14,7 @@ export const getalluser = async () => {
 export const deleteuser = async (userId) => {
     try {
       const response = await axios.delete(`${backend_api}/admin/users/${userId}`, {withCredentials: true});
+      console.log(response)
       return response.data;
     } catch (error) {
       console.error('Error deleting user:', error);
