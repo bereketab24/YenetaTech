@@ -32,7 +32,7 @@ function Verify() {
         }
       }
     } catch (error) {
-    //   console.log("Error response from server:", error.message);
+      console.log("Error response from server:", error.message);
     //   let errorMessage = "An error occurred. Please try again later.";
 
     //   if (error.message) {
