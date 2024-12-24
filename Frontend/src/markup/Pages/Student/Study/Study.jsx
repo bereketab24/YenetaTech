@@ -1,7 +1,5 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
 import { fetchCourseDetails } from "../../../../Services/course.services";
 import adminstyle from "../../../../assets/styles/user/user.module.css";
 import "./Study.css";
@@ -26,6 +24,7 @@ function Study() {
   return (
     <main id="main" className={`${adminstyle.main}`}>
       <div className={`${adminstyle.pagetitle}`}>
+        <h1>{error ? error : "Unknown Error!"}</h1>
         <h1>{course ? course.course_name : "course not found"}</h1>
       </div>
       <section id="courses" className="courses section">
@@ -45,7 +44,7 @@ function Study() {
               </div>
               <div className="card mb-2">
                 <div className="card-body">
-                <a
+                  <a
                     href={course ? course.course_notes_url : "Loading"}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -56,7 +55,7 @@ function Study() {
               </div>
               <div className="card mb-2">
                 <div className="card-body">
-                <a
+                  <a
                     href={course ? course.course_assignment_url : "Loading"}
                     target="_blank"
                     rel="noopener noreferrer"
