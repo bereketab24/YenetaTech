@@ -47,7 +47,7 @@ function Courselist() {
                 {courses.length == 0 ? (
                   <div className="container section-title ">
                     <p className="text-center">
-                      You haven't enrolled in any course yet!
+                      {"You haven't enrolled in any course yet!"}
                     </p>
                   </div>
                 ) : (
